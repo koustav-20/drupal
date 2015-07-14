@@ -1,0 +1,200 @@
+<?php
+/**
+ * @file
+ * medinipur_content_type.features.inc
+ */
+
+/**
+ * Implements hook_node_info().
+ */
+function medinipur_content_type_node_info() {
+  $items = array(
+    'article' => array(
+      'name' => t('Article'),
+      'base' => 'node_content',
+      'description' => t('Use <em>articles</em> for time-sensitive content like news, press releases or blog posts.'),
+      'has_title' => '1',
+      'title_label' => t('Article Title'),
+      'help' => '',
+    ),
+    'ask_for_report' => array(
+      'name' => t('Ask For  Report'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'block_page' => array(
+      'name' => t('Introduction Page: Block'),
+      'base' => 'node_content',
+      'description' => t('use to add block intro page
+'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'blog' => array(
+      'name' => t('Blog'),
+      'base' => 'node_content',
+      'description' => t('This is for site blog section'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'book' => array(
+      'name' => t('Collectorate Times Content'),
+      'base' => 'node_content',
+      'description' => t('<em>Collectorate Times </em> Use to add collectorate time content.'),
+      'has_title' => '1',
+      'title_label' => t('Page Title'),
+      'help' => '',
+    ),
+    'charges_history' => array(
+      'name' => t('Charges History'),
+      'base' => 'node_content',
+      'description' => t('Use to Add History of charges held by Officer'),
+      'has_title' => '1',
+      'title_label' => t('Heading'),
+      'help' => '',
+    ),
+    'collectorate_times' => array(
+      'name' => t('Collectorate Times'),
+      'base' => 'node_content',
+      'description' => t('use to add page for Collectorate Times.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'collectorate_times_front_page' => array(
+      'name' => t('Collectorate Times Front Page'),
+      'base' => 'node_content',
+      'description' => t('Use to add front page for Collectorate Times magazine'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'department_intro_page' => array(
+      'name' => t('Introduction Page: Department'),
+      'base' => 'node_content',
+      'description' => t('This is introduction page for department/ Section.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'feedback' => array(
+      'name' => t('Feedback'),
+      'base' => 'node_content',
+      'description' => t('Use to give feedback on content.'),
+      'has_title' => '1',
+      'title_label' => t('Subject'),
+      'help' => '',
+    ),
+    'feedback_reply' => array(
+      'name' => t('Feedback Reply'),
+      'base' => 'node_content',
+      'description' => t('use to  give reply of any feedback.'),
+      'has_title' => '1',
+      'title_label' => t('Subject'),
+      'help' => '',
+    ),
+    'general_content' => array(
+      'name' => t('General Content'),
+      'base' => 'node_content',
+      'description' => t('Use this to add Notice/Tender and Recruitment.'),
+      'has_title' => '1',
+      'title_label' => t('Purpose'),
+      'help' => '',
+    ),
+    'home_programms' => array(
+      'name' => t('Home Programms'),
+      'base' => 'node_content',
+      'description' => t('This is for different kind of prakalpa and programms.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'image' => array(
+      'name' => t('Image'),
+      'base' => 'node_content',
+      'description' => t('Gallery images.'),
+      'has_title' => '1',
+      'title_label' => t('Image Title'),
+      'help' => '',
+    ),
+    'image_gallery' => array(
+      'name' => t('Image Gallery'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Gallery Title'),
+      'help' => '',
+    ),
+    'import_result' => array(
+      'name' => t('Result: Import'),
+      'base' => 'node_content',
+      'description' => t('Use to import result.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'page' => array(
+      'name' => t('Basic page'),
+      'base' => 'node_content',
+      'description' => t('Use <em>basic pages</em> for your static content, such as an \'About us\' page.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'recent_post' => array(
+      'name' => t('Recent Post'),
+      'base' => 'node_content',
+      'description' => t('Recent Post'),
+      'has_title' => '1',
+      'title_label' => t('Recent Post'),
+      'help' => '',
+    ),
+    'report' => array(
+      'name' => t('Report'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'result' => array(
+      'name' => t('Result'),
+      'base' => 'node_content',
+      'description' => t('Use for result.'),
+      'has_title' => '1',
+      'title_label' => t('Student Roll Number'),
+      'help' => '',
+    ),
+    'share_doc' => array(
+      'name' => t('Document Repository'),
+      'base' => 'node_content',
+      'description' => t('This will use to add doc for sharing with other users.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'sub_divisional_page' => array(
+      'name' => t('Introduction Page: Sub-Divisional'),
+      'base' => 'node_content',
+      'description' => t('Use to add sub division intro pages '),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'test_report' => array(
+      'name' => t('test report'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  drupal_alter('node_info', $items);
+  return $items;
+}

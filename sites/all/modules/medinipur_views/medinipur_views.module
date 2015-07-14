@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the medinipur_views feature.
+ */
+
+include_once 'medinipur_views.features.inc';
