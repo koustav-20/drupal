@@ -47,6 +47,7 @@ function medinipur_bootstrap_search_form_wrapper($variables) {
 
 
 function medinipur_menu_link(array $variables) {
+    drupal_add_css('.dropdown-menu.li{border:1px dotted #ccc; }');
   $element = $variables['element'];
   $sub_menu = '';
  
@@ -56,7 +57,22 @@ function medinipur_menu_link(array $variables) {
     if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
       $sub_menu = drupal_render($element['#below']);
     }
-    elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
+    elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1 && $element['#original_link']['menu_name'] != 'main-menu')) {
+      // Add our own wrapper.
+      unset($element['#below']['#theme_wrappers']);
+      $sub_menu = '<ul class="dropdown-menu">' . drupal_render($element['#below']) . '</ul>';
+      // Generate as standard dropdown.
+     // $element['#title'] .= ' <span class="caret"></span>';
+	  $element['#title'] .= ' ';
+      $element['#attributes']['class'][] = 'dropdown';
+      $element['#localized_options']['html'] = TRUE;
+
+      // Set dropdown trigger element to # to prevent inadvertant page loading
+      // when a submenu link is clicked.
+      $element['#localized_options']['attributes']['data-target'] = '#';
+      $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
+      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+    }elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1 && $element['#original_link']['menu_name'] == 'main-menu')) {
       // Add our own wrapper.
       unset($element['#below']['#theme_wrappers']);
       $sub_menu = '<ul class="dropdown-menu">' . drupal_render($element['#below']) . '</ul>';
@@ -103,13 +119,13 @@ function medinipur_preprocess_html(&$variables) {
 
 
 
-	$goto_class = 'col-sm-9';
+	/*$goto_class = 'col-sm-9';
 	
 	if(!drupal_is_front_page()){
 		if(!user_is_logged_in()){
 			$goto_class = 'col-sm-12';
 		}
-	}
+	}*/
 
 	drupal_add_js('
 			function goToByScroll(id){
@@ -125,7 +141,12 @@ function medinipur_preprocess_html(&$variables) {
 			  // Prevent a page reload when a link is pressed
 			e.preventDefault(); 
 			  // Call the scroll function
-				goToByScroll("'.$goto_class.'");           
+			  
+			    if(typeof jQuery(".col-sm-9").offset() == "undefined"){
+					goToByScroll("col-sm-12");   
+				}else{
+					goToByScroll("col-sm-9"); 
+				}	
 		});	',	
     array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
   );

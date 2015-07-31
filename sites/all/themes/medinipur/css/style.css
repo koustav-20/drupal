@@ -4,6 +4,9 @@
  */
 
  @import url(http://fonts.googleapis.com/css?family=Lato:400,100|Noto+Sans|Francois+One|Cabin+Condensed);
+ @import url(http://fonts.googleapis.com/css?family=Lato:400,100|Noto+Sans|Francois+One|Cabin+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+@import url(http://fonts.googleapis.com/css?family=Anton);
 /*---old font @import url(http://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:400italic,400,600|Muli:300); ---------- */
 /* Variables */
 /* ---------------------------------------------------- */
@@ -6318,20 +6321,16 @@ border:0 !important;
   border-bottom: 2px solid #000;
 }
 .navbar-default .navbar-brand {
-  /*font-size: 28px;
-  font-weight: 300;
-  text-transform: lowercase;
-  font-family: "Muli", sans-serif;
-  word-spacing: -6px;
-  -webkit-text-stroke: 0.01em;*/
-/*   background: url(../img/paschim-medinipur-logo.png); 
+   background: url(../logo.png);
   background-position: left center;
   background-repeat: no-repeat;
-  text-indent:-9999px;
-  */
-  padding-left: 45px;
-  width:254px;
-  height:85px; 
+  width:285px;
+  height:85px;
+  padding:40px 0 0 65px;
+  font:"Anton", Arial, Helvetica, sans-serif;
+  font-size:24px;
+  font-weight:bold;
+  color:#287ee8;
 }
 @media (min-width: 360px) and (max-width: 768px) {
   .navbar-default .navbar-brand {
