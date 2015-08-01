@@ -4978,9 +4978,9 @@ a.feature-icon:hover {
 }
 .navbar a.logo {
 	/* background: url(../paschim-medinipur-logo.png) no-repeat 0px 3px;
-	text-indent:-9999px; */
+	text-indent:-9999px;
 	width:254px;
-  	height:85px;
+  	height:85px; */
 	display:block;
 }
 
