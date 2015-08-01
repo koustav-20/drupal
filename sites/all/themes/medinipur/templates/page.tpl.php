@@ -134,43 +134,18 @@
     <div class="container">
 
         <!-- Menu start -->
-        <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation']) || !empty($page['search'])): ?>
-            <?php if (!empty($page['search'])): ?>
-                <div class="top-nav" role="complementary">
-                    <?php print render($page['search']); ?>
-                </div>  <!-- /#search -->
-            <?php endif; ?>
-            <div class="navbar-collapse collapse">
-                <nav role="navigation">
-                    <?php if (!empty($primary_nav)): ?>
-                        <?php print render($primary_nav); ?>
-                    <?php endif; ?>
-                    <?php if (!empty($secondary_nav)): ?>
-                        <?php print render($secondary_nav); ?>
-                    <?php endif; ?>
-                    <?php /*if (!empty($page['navigation'])): ?>
-          <?php print render($page['navigation']); ?>
-          <?php endif; */ ?>
-                </nav>
-            </div>
-        <?php endif; ?>
-
-
-
-
-
-        <?php /*if (!empty($page['top_menu'])): ?>
-            <div class="navbar-collapse collapse">
-                <?php print render($page['top_menu']); ?>
-            </div> 
-        <?php endif; ?>	
         <?php if (!empty($page['search'])): ?>
             <div class="top-nav" role="complementary">
                 <?php print render($page['search']); ?>
             </div>  <!-- /#search -->
-        <?php endif; */ ?>
-
-
+        <?php endif; ?>
+        <div class="navbar-collapse collapse">
+            <nav role="navigation">
+                <?php if (!empty($primary_nav)): ?>
+                    <?php print render($primary_nav); ?>
+                <?php endif; ?>
+            </nav>
+        </div>
     </div>
 </header>
 <?php if (!empty($breadcrumb)): ?>
@@ -203,14 +178,17 @@
 
         <section<?php print $content_column_class; ?>>
             <?php if (!empty($page['highlighted'])): ?>
-                <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+                <div class="highlighted jumbotron">
+                    <?php print render($page['highlighted']); ?>
+                </div>
             <?php endif; ?>
 
             <a id="main-content"></a>
             <?php print render($title_prefix); ?>
             <?php if (!empty($title)): ?>
-                <!-- <h1 class="page-header"><?php print $title; ?></h1> -->
-                <h1 class="right-line no-margin-top"><?php print $title; ?></h1>
+                <h1 class="right-line no-margin-top">
+                    <?php print $title; ?>
+                </h1>
             <?php endif; ?>
             <?php print render($title_suffix); ?>
             <?php print $messages; ?>
@@ -221,7 +199,9 @@
                 <?php print render($page['help']); ?>
             <?php endif; ?>
             <?php if (!empty($action_links)): ?>
-                <ul class="action-links"><?php print render($action_links); ?></ul>
+                <ul class="action-links">
+                    <?php print render($action_links); ?>
+                </ul>
             <?php endif; ?>
             <?php print render($page['content']); ?>
         </section>

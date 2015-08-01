@@ -1,17 +1,27 @@
 .logo {
     float: left;
+    padding: 10px 5px 20px 30px;
 }
 
 #name-and-slogan {
-    padding-top: 10px;
+    padding-top: 30px;
     float: left;
 }
 
 #site-name {
-    font-size: 2em;
+    font-size: 24px;
+    font-family: "Cabin Condensed", Arial, Helvetica, sans-serif;
 }
 
 #site-slogan {
-    padding-top: 10px;
+    padding-top: 4px;
     font-style: italic;
+}
+
+.block-menu .dropdown-menu {
+    display: block;
+}
+
+#top-section {
+    float: right;
 }
