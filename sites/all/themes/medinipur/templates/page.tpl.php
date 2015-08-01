@@ -82,7 +82,7 @@
         <?php endif; ?>
     </div>
 </div>
-<header id="navbar" role="banner" class="navbar navbar-default" >
+<header id="navbar" role="banner" class="navbar navbar-default">
     <div class="white-overlay"></div>
     <div class="white-overlay-search">
         <div class="navbar-header">
@@ -93,46 +93,67 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-      <!--	   <a class="navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">Paschim Medinipur</a>-->
-           
-              <?php if ($logo): ?>
-                <div class="header" style="width:259px;">
-                    <a href="<?php print $front_page; ?>"><img src="<?php print $logo; ?>"  alt="<?php print t('Home'); ?>" style="float: left;background: #555;"/></a>
-                    <h1 style="position: relative;top: 45px;left: 0px;font-size:28px;"><?php print $site_name; ?></h1>
-                </div>
-
+            <?php if ($logo): ?>
+                <a class="logo" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"
+                   id="logo">
+                    <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
+                </a>
             <?php endif; ?>
 
-            <?php /* if (!empty($site_name)): ?>
-              <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
-              <?php endif; */ ?>
+            <?php if ($site_name || $site_slogan): ?>
+                <div id="name-and-slogan">
 
+                    <?php if ($site_name): ?>
+                        <?php if ($title): ?>
+                            <div id="site-name">
+                                <strong>
+                                    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
+                                        <span><?php print $site_name; ?></span>
+                                    </a>
+                                </strong>
+                            </div>
+                        <?php else: /* Use h1 when the content title is empty */ ?>
+                            <h1 id="site-name">
+                                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
+                                    <span><?php print $site_name; ?></span>
+                                </a>
+                            </h1>
+                        <?php endif; ?>
+                    <?php endif; ?>
 
+                    <?php if ($site_slogan): ?>
+                        <div id="site-slogan">
+                            <?php print $site_slogan; ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div> <!-- /#name-and-slogan -->
+            <?php endif; ?>
         </div>
     </div>
-    <div class="container">    
+    <div class="container">
 
         <!-- Menu start -->
-        <?php  if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation']) || !empty($page['search'])): ?>
-          <?php if (!empty($page['search'])): ?>
-          <div class="top-nav" role="complementary">
-          <?php print render($page['search']); ?>
-          </div>  <!-- /#search -->
-          <?php endif; ?>
-          <div class="navbar-collapse collapse">
-          <nav role="navigation">
-          <?php if (!empty($primary_nav)): ?>
-          <?php print render($primary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($secondary_nav)): ?>
-          <?php print render($secondary_nav); ?>
-          <?php endif; ?>
-          <?php /*if (!empty($page['navigation'])): ?>
+        <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation']) || !empty($page['search'])): ?>
+            <?php if (!empty($page['search'])): ?>
+                <div class="top-nav" role="complementary">
+                    <?php print render($page['search']); ?>
+                </div>  <!-- /#search -->
+            <?php endif; ?>
+            <div class="navbar-collapse collapse">
+                <nav role="navigation">
+                    <?php if (!empty($primary_nav)): ?>
+                        <?php print render($primary_nav); ?>
+                    <?php endif; ?>
+                    <?php if (!empty($secondary_nav)): ?>
+                        <?php print render($secondary_nav); ?>
+                    <?php endif; ?>
+                    <?php /*if (!empty($page['navigation'])): ?>
           <?php print render($page['navigation']); ?>
-          <?php endif; */?>
-          </nav>
-          </div>
-          <?php endif;  ?>
+          <?php endif; */ ?>
+                </nav>
+            </div>
+        <?php endif; ?>
 
 
 
@@ -147,10 +168,7 @@
             <div class="top-nav" role="complementary">
                 <?php print render($page['search']); ?>
             </div>  <!-- /#search -->
-        <?php endif; */?>
-
-
-
+        <?php endif; */ ?>
 
 
     </div>
@@ -164,38 +182,34 @@
                     print $title;
                 endif;
                 ?>
-            </h1>       
-    <?php print $breadcrumb; ?>
+            </h1>
+            <?php print $breadcrumb; ?>
         </div>
     </header>
-<?php endif; ?> 
+<?php endif; ?>
 
 <header role="banner" id="page-header">
-    <?php if (!empty($site_slogan)): ?>
-        <p class="lead"><?php print $site_slogan; ?></p>
-    <?php endif; ?>
-
-<?php print render($page['header']); ?>
+    <?php print render($page['header']); ?>
 </header> <!-- /#page-header -->
 
 <div class="main-container container">
     <div class="row">
 
-            <?php if (!empty($page['sidebar_first'])): ?>
+        <?php if (!empty($page['sidebar_first'])): ?>
             <aside class="col-sm-3" role="complementary">
-            <?php print render($page['sidebar_first']); ?>
+                <?php print render($page['sidebar_first']); ?>
             </aside>  <!-- /#sidebar-first -->
-<?php endif; ?>
+        <?php endif; ?>
 
         <section<?php print $content_column_class; ?>>
             <?php if (!empty($page['highlighted'])): ?>
                 <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
-<?php endif; ?>
+            <?php endif; ?>
 
             <a id="main-content"></a>
             <?php print render($title_prefix); ?>
-<?php if (!empty($title)): ?>
-                   <!-- <h1 class="page-header"><?php print $title; ?></h1> -->
+            <?php if (!empty($title)): ?>
+                <!-- <h1 class="page-header"><?php print $title; ?></h1> -->
                 <h1 class="right-line no-margin-top"><?php print $title; ?></h1>
             <?php endif; ?>
             <?php print render($title_suffix); ?>
@@ -209,14 +223,14 @@
             <?php if (!empty($action_links)): ?>
                 <ul class="action-links"><?php print render($action_links); ?></ul>
             <?php endif; ?>
-<?php print render($page['content']); ?>
+            <?php print render($page['content']); ?>
         </section>
 
-            <?php if (!empty($page['sidebar_second'])): ?>
+        <?php if (!empty($page['sidebar_second'])): ?>
             <aside class="col-sm-3" role="complementary">
-            <?php print render($page['sidebar_second']); ?>
+                <?php print render($page['sidebar_second']); ?>
             </aside>  <!-- /#sidebar-second -->
-<?php endif; ?>
+        <?php endif; ?>
 
     </div>
 </div>
@@ -228,26 +242,26 @@
                 <div class="col-md-4">
                     <?php if (!empty($page['footer_left'])): ?>
                         <?php print render($page['footer_left']); ?><!-- /#footer_left-->
-    <?php endif; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="col-md-4">
                     <?php if (!empty($page['footer_middle'])): ?>
                         <?php print render($page['footer_middle']); ?><!-- /#footer_middle-->
-    <?php endif; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="col-md-4">
                     <?php if (!empty($page['footer_right'])): ?>
                         <?php print render($page['footer_right']); ?><!-- /#footer_right-->
-    <?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
-            <!-- row --> 
+            <!-- row -->
         </div>
-        <!-- container --> 
+        <!-- container -->
     </aside>
     <!-- footer-widgets ends-->
 <?php endif; ?>
 
-<footer class="footer" id='footer' >
-<?php print render($page['footer']); ?>
+<footer class="footer" id='footer'>
+    <?php print render($page['footer']); ?>
 </footer>

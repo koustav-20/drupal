@@ -1,4 +1,4 @@
-name = Medinipur
+name = Medinipur 7.x-0.01
 description = A Bootstrap Sub-theme.
 core = 7.x
 base theme = bootstrap
@@ -8,7 +8,7 @@ base theme = bootstrap
 ;; Regions
 ;;;;;;;;;;;;;;;;;;;;;
 
-regions[top]         = 'Top Section'
+regions[top]            = 'Top Section'
 regions[search]    		= 'Search'
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
@@ -17,12 +17,12 @@ regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
 regions[sidebar_second] = 'Secondary'
 regions[footer_left]    = 'Footer Left'
-regions[footer_middle]    = 'Footer Middle'
-regions[footer_right]    = 'Footer Right'
+regions[footer_middle]  = 'Footer Middle'
+regions[footer_right]   = 'Footer Right'
 regions[footer]         = 'Footer'
 regions[page_top]       = 'Page top'
 regions[page_bottom]    = 'Page bottom'
-regions[top_menu]    = 'Top Menu'
+regions[top_menu]       = 'Top Menu'
 
 
 ;;;;;;;;;;;;;;;;;;;;;
@@ -32,6 +32,7 @@ stylesheets[all][] = 'bootstrap/css/bootstrap.min.css'
 stylesheets[all][] = 'bootstrap/css/font-awesome.min.css'
 stylesheets[all][] = 'bootstrap/css/animate.min.css'
 stylesheets[all][] = 'css/style.css'
+stylesheets[all][] = 'css/header.css'
 stylesheets[all][] = 'bootstrap/buttons.css'
 stylesheets[all][] = 'bootstrap/nav-tabs.css'
 

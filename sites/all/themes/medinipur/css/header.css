@@ -1,0 +1,17 @@
+.logo {
+    float: left;
+}
+
+#name-and-slogan {
+    padding-top: 10px;
+    float: left;
+}
+
+#site-name {
+    font-size: 2em;
+}
+
+#site-slogan {
+    padding-top: 10px;
+    font-style: italic;
+}
