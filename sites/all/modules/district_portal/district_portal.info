@@ -2,7 +2,10 @@ name = District Portal
 description = District Portal of Paschim Medinipur
 package = "District Portal"
 core = 7.x
-version = DISTRICT_PORTAL_VERSION
+
 dependencies[] = book
 dependencies[] = poll
 dependencies[] = flexslider_fields
+dependencies[] = block
+
+version = DISTRICT_PORTAL_VERSION

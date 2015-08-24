@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file district_portal.install
+ * Contains install and update functions for District Portal module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function district_portal_uninstall() {
+  variable_del('district_portal_string');
+}
