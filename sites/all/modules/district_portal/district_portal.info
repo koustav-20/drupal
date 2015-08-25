@@ -7,5 +7,6 @@ dependencies[] = book
 dependencies[] = poll
 dependencies[] = flexslider_fields
 dependencies[] = block
+dependencies[] = views
 
 version = DISTRICT_PORTAL_VERSION

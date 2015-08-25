@@ -135,7 +135,7 @@ function district_portal_image_default_styles() {
     'label' => 'Slide (960x400)',
     'effects' => array(
       array(
-        'name' => 'image_scale',
+        'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 960,
           'height' => 400,
@@ -162,6 +162,30 @@ function district_portal_block_view_system_powered_by_alter(&$data, $block) {
   if ($block->theme == 'district_portal') {
     $data['content'] = t('Developed by NIC, Paschim Medinipur');
   }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+
+function district_portal_views_api() {
+  return array ('api' => 3.0);
+}
+
+function district_portal_views_default_views() {
+  // Check for all view file in views directory
+  $files = file_scan_directory(drupal_get_path('module', 'district_portal') . '/views', '/.*\.inc$/');
+
+  // Add view to list of views
+  foreach ($files as $filepath => $file) {
+    require $filepath;
+    if (isset($view)) {
+      $views[$view->name] = $view;
+    }
+  }
+
+  // At the end, return array of default views.
+  return $views;
 }
 /**
  * @} End of "defgroup district_portal".
