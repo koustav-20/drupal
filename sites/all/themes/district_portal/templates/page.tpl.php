@@ -74,7 +74,7 @@
  */
 ?>
 
-<div class="container visible-sm visible-md visible-lg" role="banner">
+<div class="container-fluid visible-sm visible-md visible-lg" role="banner">
   <?php if (!empty($secondary_nav) || !empty($page['top_nav'])): ?>
     <div class="pull-right">
       <nav role="navigation">
@@ -97,7 +97,7 @@
 
   <div class="site-name">
     <?php if (!empty($site_name)): ?>
-      <a href="<?php print $front_page; ?>"
+      <a class="inset-text-effect" href="<?php print $front_page; ?>"
          title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
     <?php endif; ?>
 
@@ -108,8 +108,9 @@
   </div>
 </div>
 
-<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-  <div class="container">
+<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>"
+  data-spy="affix" data-offset-top="130">
+  <div class="container-fluid">
     <div class="navbar-header visible-xs">
       <?php if ($logo): ?>
         <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>"
@@ -154,7 +155,7 @@
   </div>
 </header>
 
-<div class="main-container container">
+<div class="main-container container-fluid">
 
   <header role="banner" id="page-header">
     <?php print render($page['header']); ?>
@@ -202,6 +203,9 @@
 
   </div>
 </div>
-<footer class="footer container">
+<footer class="footer container-fluid">
   <?php print render($page['footer']); ?>
 </footer>
+<div id="copyright" class="container-fluid">
+  <span>Copyright &copy; 2015 Paschim Medinipur</span>
+</div>
