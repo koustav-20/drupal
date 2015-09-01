@@ -7343,12 +7343,16 @@ table .checkbox input[type="checkbox"] {
 .inset-text-effect {
   display: inline-block;
   border: none;
-  font: normal 40px/1 "Aladin", Helvetica, sans-serif;
+  font: normal 51px/1 "Aladin", Helvetica, sans-serif;
   color: #303030;
   text-align: center;
   -o-text-overflow: clip;
   text-overflow: clip;
   white-space: pre;
+}
+#site-header {
+  height: 170px;
+  background: url("../images/header.png") no-repeat, url("../images/header.png") repeat-x right -170px;
 }
 .block-search {
   padding: 12px;
@@ -7371,5 +7375,14 @@ table .checkbox input[type="checkbox"] {
 }
 .footer {
   color: #fff;
+  margin-top: -85px;
   background-color: #222222;
+}
+#grass {
+  position: relative;
+  top: -85px;
+  width: 100%;
+  height: 104px;
+  background: url("../images/grass-s.png") no-repeat left bottom, url("../images/grass-s.png") repeat-x left 83px, url("../images/grass-r.png") no-repeat right bottom;
+  z-index: -1000;
 }

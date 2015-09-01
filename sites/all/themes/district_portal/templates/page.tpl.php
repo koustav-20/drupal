@@ -74,7 +74,8 @@
  */
 ?>
 
-<div class="container-fluid visible-sm visible-md visible-lg" role="banner">
+<div class="container-fluid visible-sm visible-md visible-lg"
+     id="site-header" role="banner">
   <?php if (!empty($secondary_nav) || !empty($page['top_nav'])): ?>
     <div class="pull-right">
       <nav role="navigation">
@@ -203,6 +204,7 @@
 
   </div>
 </div>
+<div id="grass"></div>
 <footer class="footer container-fluid">
   <?php print render($page['footer']); ?>
 </footer>
