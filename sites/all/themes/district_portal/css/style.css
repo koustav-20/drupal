@@ -7337,6 +7337,39 @@ table .checkbox input[type="checkbox"] {
   padding: 30px 0 0 30px;
 }
 .site-name {
-  padding: 30px 0 0 90px;
+  padding: 30px 0 20px 90px;
   font-size: 36px;
+}
+.inset-text-effect {
+  display: inline-block;
+  border: none;
+  font: normal 40px/1 "Aladin", Helvetica, sans-serif;
+  color: #303030;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
+}
+.block-search {
+  padding: 12px;
+}
+#navbar.affix {
+  top: 0;
+  width: 100%;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
+}
+@media (max-width: 768px) {
+  .affix {
+    position: static;
+  }
+}
+#niclogo {
+  height: 66px;
+  width: 153px;
+  background-image: url("../images/niclogo.png");
+}
+.footer {
+  color: #fff;
+  background-color: #222222;
 }
