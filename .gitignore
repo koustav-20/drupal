@@ -6,3 +6,4 @@ sites/*/files
 sites/*/private
 writereaddata/*
 sites/*/.idea/*
+/sites/all/modules/features/*

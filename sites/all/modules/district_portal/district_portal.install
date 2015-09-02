@@ -5,6 +5,36 @@
  * Contains install and update functions for District Portal module.
  */
 
+
+/**
+ * Implements hook_install().
+ */
+function district_portal_install() {
+  $t = get_t(); // runs in both the installer and runtime
+
+  /* Create and save a new content object */
+  $slideshow = 'test_content'; // machine name of the content type
+
+  // define the node type
+  $slideshow_images = array(
+    'type' => $slideshow,
+    'name' => $t('Test Content'),// Display name of the content type
+    'base' => 'node_content',
+    'title_label' => $t('Title'),
+    'description' => $t('To add new contents to an existing page.'),
+    'custom' => TRUE,
+  );
+
+  // set other node defaults not declared above
+  $content_type = node_type_set_defaults($slideshow_images);
+
+  // add the body field
+  node_add_body_field($content_type, $t('Body'));
+
+  // save the content type
+  node_type_save($content_type);
+}
+
 /**
  * Implements hook_uninstall().
  */
