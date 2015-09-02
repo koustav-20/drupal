@@ -110,7 +110,7 @@
 </div>
 
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>"
-  data-spy="affix" data-offset-top="130">
+  data-spy="affix" data-offset-top="170">
   <div class="container-fluid">
     <div class="navbar-header visible-xs">
       <?php if ($logo): ?>
