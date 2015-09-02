@@ -7368,6 +7368,40 @@ table .checkbox input[type="checkbox"] {
     position: static;
   }
 }
+.book-navigation {
+  clear: both;
+  padding-top: 1em;
+  margin: 0 0 1em 0;
+}
+.book-navigation .nav {
+  border-top: 1px solid #e5e5e5;
+  margin-bottom: 3px;
+}
+.book-navigation .nav li {
+  list-style: disc outside none;
+  margin: 0 0 0 25px;
+}
+.book-navigation .page-links {
+  border-top: 1px solid #e5e5e5;
+}
+.book-navigation .page-links .page-previous {
+  text-align: left;
+  width: 42%;
+  display: block;
+  float: left;
+}
+.book-navigation .page-links .page-up {
+  margin: 0px 5%;
+  width: 4%;
+  display: block;
+  float: left;
+}
+.book-navigation .page-links .page-next {
+  text-align: right;
+  width: 42%;
+  display: block;
+  float: right;
+}
 #niclogo {
   height: 66px;
   width: 153px;
