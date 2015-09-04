@@ -7,3 +7,4 @@ sites/*/private
 writereaddata/*
 sites/*/.idea/*
 /sites/all/modules/features/*
+/sites/all/modules/devel/*
