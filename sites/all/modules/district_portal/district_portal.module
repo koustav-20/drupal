@@ -163,6 +163,11 @@ function district_portal_block_view_system_powered_by_alter(&$data, $block) {
     $data['content'] = '';
       // t('Developed by NIC, Paschim Medinipur');
   }
+
+  if ($block->theme == 'recruitment') {
+    $data['content'] = t('Designed & Developed by'
+      . ' <strong>NIC Paschim Medinipur</strong>');
+  }
 }
 
 /**
