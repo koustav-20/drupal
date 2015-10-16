@@ -51,21 +51,7 @@ function webform_calculator_eval($formula, $precision = 1) {
  * Implements hook_theme().
  */
 function webform_calculator_theme() {
-  return array(
-    'webform_calculator_formula' => array(
-      'render element' => 'element',
-      'arguments' => array('element' => NULL),
-    ),
-  );
-}
-
-/**
- * Format the output of data for this component.
- */
-function theme_webform_calculator_formula($variables) {
-  $element = $variables['element'];
-  $element['#value'] = empty($element['#value']) ? ' ' : $element['#value'];
-  return $element['#format'] == 'html' ? check_plain($element['#value']) : $element['#value'];
+  return array(webform_component_invoke('formula', 'theme'));
 }
 
 /**
@@ -113,7 +99,12 @@ function webform_calculator_replace_formula_values($formula_component, $webform_
   foreach ($components_from_formula as $component_key) {
     if (isset($components_by_key[$component_key])) {
       $component = $components_by_key[$component_key];
-      $formula = str_replace('{' . $component_key . '}', '(' . $submission->data[$component['cid']][0] . ')', $formula);
+      $values = $submission->data[$component['cid']];
+      $sum = 0;
+      foreach ($values as $value) {
+        $sum += $value;
+      }
+      $formula = str_replace('{' . $component_key . '}', '(' . $sum . ')', $formula);
     }
   }
 
@@ -140,7 +131,7 @@ function webform_calculator_replace_formula_values($formula_component, $webform_
  */
 function webform_calculator_validate_php($code) {
   $allowed_tokens = array(T_LNUMBER, T_DNUMBER, T_WHITESPACE);
-  $allowed_chars = array('+', '-', '*', '/', '^', '(', ')', '%');
+  $allowed_chars = array('+', '-', '*', '/', '(', ')', '%');
 
   $tokens = token_get_all('<?php ' . $code);
   // Remove opening php tag.
