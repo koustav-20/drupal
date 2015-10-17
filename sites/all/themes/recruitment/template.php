@@ -13,7 +13,7 @@ function recruitment_webform_display_file($variables) {
   if( !empty($file) ) {
     $image_extensions = array("png", "bmp", "jpg", "jpeg", "gif");
     $extension = explode(".", $file->uri);
-    $extension = $extension[count($extension) - 1];
+    $extension = drupal_strtolower($extension[count($extension) - 1]);
 
     $is_image = in_array($extension, $image_extensions);
 
