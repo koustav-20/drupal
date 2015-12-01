@@ -193,6 +193,23 @@ function district_portal_views_default_views() {
   // At the end, return array of default views.
   return $views;
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+
+function district_portal_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id) {
+    case 'user_login_block': // Log-in block form.
+    case 'user_login': // Log-in form.
+      // Username
+      $form['name']['#attributes']['autocomplete'] = 'off';
+
+      // Password
+      $form['pass']['#attributes']['autocomplete'] = 'off';
+      break;
+  }
+}
 /**
  * @} End of "defgroup district_portal".
  */
