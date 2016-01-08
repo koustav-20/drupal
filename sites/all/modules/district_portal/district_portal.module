@@ -202,6 +202,10 @@ function district_portal_form_alter(&$form, $form_state, $form_id) {
   switch ($form_id) {
     case 'user_login_block': // Log-in block form.
     case 'user_login': // Log-in form.
+    case 'user_pass': // Request New Password form.
+    case 'user_register_form': // Create User form.
+
+      $form['#attributes']['autocomplete'] = 'off';
       // Username
       $form['name']['#attributes']['autocomplete'] = 'off';
 
