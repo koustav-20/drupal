@@ -73,7 +73,17 @@
  * @ingroup themeable
  */
 ?>
-
+<?php if (user_is_logged_in()): ?>
+  <script type="text/javascript">
+    if (!navigator.onLine) {
+      document.body.innerHTML = 'Loading...';
+      window.location = '?q=user/logout';
+    }
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=http://www.enable-javascript.com/">
+  </noscript>
+<?php endif; ?>
 <div class="container-fluid visible-sm visible-md visible-lg"
      id="site-header" role="banner">
   <?php if (!empty($secondary_nav) || !empty($page['top_nav'])): ?>
