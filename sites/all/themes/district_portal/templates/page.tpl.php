@@ -77,7 +77,7 @@
   <script type="text/javascript">
     if (!navigator.onLine) {
       document.body.innerHTML = 'Loading...';
-      window.location = '?q=user/logout';
+      window.location = '<?php echo url('user/logout',array('absolute'=>TRUE));?>';
     }
   </script>
   <noscript>

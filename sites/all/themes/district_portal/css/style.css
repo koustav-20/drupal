@@ -7363,6 +7363,20 @@ table .checkbox input[type="checkbox"] {
   opacity: 0.95;
   filter: alpha(opacity=95);
 }
+.secondary > li > a {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  color: black;
+  text-shadow: white 0.1em 0.1em 0.5em;
+  margin: 5px 2px;
+  padding: 5px 10px;
+  background-color: #b0ab65;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
 @media (max-width: 768px) {
   .affix {
     position: static;
