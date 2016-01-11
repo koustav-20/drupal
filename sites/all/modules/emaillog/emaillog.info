@@ -1,0 +1,10 @@
+name = Email Log
+core = 7.x
+description = Sends log entires by email.
+
+; Information added by drupal.org packaging script on 2012-10-25
+version = "7.x-1.0-rc1"
+core = "7.x"
+project = "emaillog"
+datestamp = "1351190213"
+
