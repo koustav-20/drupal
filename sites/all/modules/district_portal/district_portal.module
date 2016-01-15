@@ -212,6 +212,10 @@ function district_portal_form_alter(&$form, $form_state, $form_id) {
       // Password
       $form['pass']['#attributes']['autocomplete'] = 'off';
       break;
+    case 'contact_site_form':
+    case 'contact_personal_form':
+      $form['#attributes']['autocomplete'] = 'off';
+      break;
   }
 }
 /**
