@@ -227,6 +227,19 @@ function district_portal_form_alter(&$form, $form_state, $form_id) {
 function contact_form_submit_handler(&$form, &$form_state) {
   $form_state['redirect'] = 'contact';
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Add the enable personal contact form to an individual user's account page.
+ *
+ * @see user_profile_form()
+ */
+function district_portal_form_user_profile_form_alter(&$form, &$form_state) {
+  if ($form['#user_category'] == 'account') {
+    $form['contact']['contact']['#description'] = t('Allow other users to contact you via a personal contact form which keeps your e-mail address hidden.');
+  }
+}
 /**
  * @} End of "defgroup district_portal".
  */
