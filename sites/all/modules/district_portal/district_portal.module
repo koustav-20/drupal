@@ -212,11 +212,20 @@ function district_portal_form_alter(&$form, $form_state, $form_id) {
       // Password
       $form['pass']['#attributes']['autocomplete'] = 'off';
       break;
+
     case 'contact_site_form':
+      $form['#submit'][] = 'contact_form_submit_handler';
+      $form['#attributes']['autocomplete'] = 'off';
+      break;
+
     case 'contact_personal_form':
       $form['#attributes']['autocomplete'] = 'off';
       break;
   }
+}
+
+function contact_form_submit_handler(&$form, &$form_state) {
+  $form_state['redirect'] = 'contact';
 }
 /**
  * @} End of "defgroup district_portal".
