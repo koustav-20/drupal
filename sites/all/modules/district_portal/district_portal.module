@@ -240,6 +240,16 @@ function district_portal_form_user_profile_form_alter(&$form, &$form_state) {
     $form['contact']['contact']['#description'] = t('Allow other users to contact you via a personal contact form which keeps your e-mail address hidden.');
   }
 }
+
+/**
+ * Implements hook_menu_site_status_alter().
+ */
+function encrypt_submissions_menu_site_status_alter(&$menu_site_status, $path) {
+  if('encrypt-submissions/generate-keypair' === $path){
+    $menu_site_status = MENU_SITE_ONLINE;
+  }
+}
+
 /**
  * @} End of "defgroup district_portal".
  */
