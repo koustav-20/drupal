@@ -250,6 +250,18 @@ function encrypt_submissions_menu_site_status_alter(&$menu_site_status, $path) {
   }
 }
 
+function district_portal_menu_site_status_alter(&$menu_site_status, $path) {
+
+  $allowed_pathes = array(
+    "user/register",
+  );
+  if ($menu_site_status == MENU_SITE_OFFLINE && user_is_anonymous() ) {
+    if( in_array( $path, $allowed_pathes ) ) {
+      $menu_site_status = MENU_SITE_ONLINE;
+    }
+  }
+}
+
 /**
  * @} End of "defgroup district_portal".
  */
