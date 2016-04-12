@@ -263,5 +263,37 @@ function district_portal_menu_site_status_alter(&$menu_site_status, $path) {
 }
 
 /**
+ * Implements hook_token_info(). This hook will register tow token lname and fname.
+ */
+function district_portal_token_info() {
+  $info['tokens']['site']['remote-ip'] = array(
+    'name' => t('IP Address'),
+    'description' => t('Show the remote IP Address'),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function district_portal_tokens($type, $tokens, $data = array(), $options = array()) {
+
+  $replacements = array();
+
+  if ($type == 'site') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'remote-ip':
+          $replacements[$original] = ip_address();
+          break;
+      }
+    }
+  }
+  return $replacements;
+}
+
+
+/**
  * @} End of "defgroup district_portal".
  */
