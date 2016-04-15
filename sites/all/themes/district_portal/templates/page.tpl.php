@@ -217,9 +217,11 @@
   </div>
 </div>
 <div id="grass"></div>
-<footer class="footer container-fluid">
-  <?php print render($page['footer']); ?>
-</footer>
+<?php if (!empty($page['footer'])): ?>
+  <footer class="footer container-fluid">
+    <?php print render($page['footer']); ?>
+  </footer>
+<?php endif; ?>
 <div id="copyright" class="container-fluid">
   <span>Copyright &copy; 2015 Paschim Medinipur</span>
 </div>
