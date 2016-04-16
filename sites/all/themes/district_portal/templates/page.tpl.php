@@ -77,11 +77,12 @@
   <script type="text/javascript">
     if (!navigator.onLine) {
       document.body.innerHTML = 'Loading...';
-      window.location = '<?php echo url('user/logout',array('absolute'=>TRUE));?>';
+      window.location = '<?php echo url('user/logout', array('absolute' => TRUE));?>';
     }
   </script>
   <noscript>
-    <meta http-equiv="refresh" content="0;url=http://www.enable-javascript.com/">
+    <meta http-equiv="refresh"
+          content="0;url=http://www.enable-javascript.com/">
   </noscript>
 <?php endif; ?>
 <div class="container-fluid visible-sm visible-md visible-lg"
@@ -125,7 +126,8 @@
     <div class="container-fluid">
       <div class="navbar-header visible-xs">
         <?php if ($logo): ?>
-          <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>"
+          <a class="logo navbar-btn pull-left"
+             href="<?php print $front_page; ?>"
              title="<?php print t('Home'); ?>">
             <img src="<?php print $logo; ?>" width="19px"
                  alt="<?php print t('Home'); ?>"/>
@@ -215,13 +217,17 @@
     <?php endif; ?>
 
   </div>
+  <?php if (!empty($page['footer'])): ?>
+    <div id="footer-links" class="center-block">
+      <?php print render($page['footer']); ?>
+    </div>
+  <?php endif; ?>
+
 </div>
-<div id="grass"></div>
-<?php if (!empty($page['footer'])): ?>
-  <footer class="footer container-fluid">
-    <?php print render($page['footer']); ?>
-  </footer>
-<?php endif; ?>
-<div id="copyright" class="container-fluid">
-  <span>Copyright &copy; 2015 Paschim Medinipur</span>
-</div>
+<footer class="footer">
+  <div id="grass"></div>
+  <div id="niclogo"></div>
+  <div id="copyright" class="container-fluid">
+    <span>Copyright &copy; 2015 Paschim Medinipur</span>
+  </div>
+</footer>
