@@ -11,13 +11,9 @@ $view->disabled = FALSE; /* Edit this to true to make a default view disabled in
 
 /* Display: Master */
 $handler = $view->new_display('default', 'Master', 'default');
-$handler->display->display_options['title'] = 'Related Pages';
+$handler->display->display_options['title'] = 'More Contents';
 $handler->display->display_options['use_more_always'] = FALSE;
-$handler->display->display_options['group_by'] = TRUE;
-$handler->display->display_options['access']['type'] = 'role';
-$handler->display->display_options['access']['role'] = array(
-  1 => '1',
-);
+$handler->display->display_options['access']['type'] = 'perm';
 $handler->display->display_options['cache']['type'] = 'none';
 $handler->display->display_options['query']['type'] = 'views_query';
 $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -28,28 +24,19 @@ $handler->display->display_options['style_plugin'] = 'default';
 $handler->display->display_options['style_options']['default_row_class'] = FALSE;
 $handler->display->display_options['style_options']['row_class_special'] = FALSE;
 $handler->display->display_options['row_plugin'] = 'fields';
-$handler->display->display_options['row_options']['hide_empty'] = TRUE;
-/* Relationship: Content: Taxonomy terms on node */
-$handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
-$handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
-$handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
-$handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
-  'organizational_unit' => 'organizational_unit',
-  'tags' => 0,
+$handler->display->display_options['row_options']['inline'] = array(
+  'title' => 'title',
+  'section' => 'section',
 );
-/* Relationship: Taxonomy term: Content using Category */
-$handler->display->display_options['relationships']['reverse_field_category_node']['id'] = 'reverse_field_category_node';
-$handler->display->display_options['relationships']['reverse_field_category_node']['table'] = 'taxonomy_term_data';
-$handler->display->display_options['relationships']['reverse_field_category_node']['field'] = 'reverse_field_category_node';
-$handler->display->display_options['relationships']['reverse_field_category_node']['relationship'] = 'term_node_tid';
+$handler->display->display_options['row_options']['hide_empty'] = TRUE;
 /* Field: Content: Title */
 $handler->display->display_options['fields']['title']['id'] = 'title';
 $handler->display->display_options['fields']['title']['table'] = 'node';
 $handler->display->display_options['fields']['title']['field'] = 'title';
-$handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_category_node';
+$handler->display->display_options['fields']['title']['relationship'] = 'nid';
 $handler->display->display_options['fields']['title']['label'] = '';
 $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-/* Sort criterion: COUNT(Content: Nid) */
+/* Sort criterion: Content: Nid */
 $handler->display->display_options['sorts']['nid']['id'] = 'nid';
 $handler->display->display_options['sorts']['nid']['table'] = 'node';
 $handler->display->display_options['sorts']['nid']['field'] = 'nid';
@@ -65,17 +52,23 @@ $handler->display->display_options['arguments']['nid']['default_argument_type'] 
 $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
 $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
 $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-/* Contextual filter: Content: Nid */
-$handler->display->display_options['arguments']['nid_1']['id'] = 'nid_1';
-$handler->display->display_options['arguments']['nid_1']['table'] = 'node';
-$handler->display->display_options['arguments']['nid_1']['field'] = 'nid';
-$handler->display->display_options['arguments']['nid_1']['relationship'] = 'reverse_field_category_node';
-$handler->display->display_options['arguments']['nid_1']['default_action'] = 'default';
-$handler->display->display_options['arguments']['nid_1']['default_argument_type'] = 'node';
-$handler->display->display_options['arguments']['nid_1']['summary']['number_of_records'] = '0';
-$handler->display->display_options['arguments']['nid_1']['summary']['format'] = 'default_summary';
-$handler->display->display_options['arguments']['nid_1']['summary_options']['items_per_page'] = '25';
-$handler->display->display_options['arguments']['nid_1']['not'] = TRUE;
+$handler->display->display_options['arguments']['nid']['not'] = TRUE;
+/* Contextual filter: Content: Organizational Unit (field_organizational_unit) */
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['id'] = 'field_organizational_unit_tid';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['table'] = 'field_data_field_organizational_unit';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['field'] = 'field_organizational_unit_tid';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['default_action'] = 'default';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['default_argument_type'] = 'taxonomy_tid';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['default_argument_options']['term_page'] = FALSE;
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['default_argument_options']['node'] = TRUE;
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['default_argument_options']['anyall'] = '+';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['default_argument_options']['limit'] = TRUE;
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['default_argument_options']['vocabularies'] = array(
+  'organizational_unit' => 'organizational_unit',
+);
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['summary']['number_of_records'] = '0';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['summary']['format'] = 'default_summary';
+$handler->display->display_options['arguments']['field_organizational_unit_tid']['summary_options']['items_per_page'] = '25';
 /* Filter criterion: Content: Published */
 $handler->display->display_options['filters']['status']['id'] = 'status';
 $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -83,6 +76,17 @@ $handler->display->display_options['filters']['status']['field'] = 'status';
 $handler->display->display_options['filters']['status']['value'] = 1;
 $handler->display->display_options['filters']['status']['group'] = 1;
 $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'article' => 'article',
+  'page' => 'page',
+  'book' => 'book',
+  'notification' => 'notification',
+);
 
 /* Display: Block */
 $handler = $view->new_display('block', 'Block', 'block');
+$handler->display->display_options['block_description'] = 'Related Contents';
