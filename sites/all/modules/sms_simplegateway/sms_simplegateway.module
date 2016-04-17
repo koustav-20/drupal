@@ -48,22 +48,22 @@ function sms_simplegateway_admin_form($configuration) {
     '#title' => 'Sender (outgoing messages)',
     '#collapsible' => TRUE,
   );
-  $form['sms_simplegateway_send']['sms_simplegateway_base_url'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Base URL for sending messages'),
-    '#description' => t('Eg: http://simplegateway.example.com:13031/sendsms'),
-    '#size' => 60,
-    '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_base_url'],
-  );
   $form['sms_simplegateway_send']['sms_simplegateway_method'] = array(
     '#type' => 'radios',
     '#title' => t('HTTP method'),
-    '#default_value' => $configuration['sms_simplegateway_method'],
+    '#default_value' => isset($configuration['sms_simplegateway_method']) ? $configuration['sms_simplegateway_method'] : NULL,
     '#options' => array(
       'GET' => 'GET',
       'POST' => 'POST',
     ),
+  );
+  $form['sms_simplegateway_send']['sms_simplegateway_base_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Base URL for sending messages'),
+    '#description' => t('Eg: http://simplegateway.example.com:13031/sendsms'),
+    '#size' => 40,
+    '#maxlength' => 255,
+    '#default_value' => isset($configuration['sms_simplegateway_base_url']) ? $configuration['sms_simplegateway_base_url'] : NULL,
   );
   $form['sms_simplegateway_send']['sms_simplegateway_user_field'] = array(
     '#type' => 'textfield',
@@ -71,7 +71,7 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('Optional. The argument/field name for the field that holds the username. Eg: user, username, authid.'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_user_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_user_field']) ? $configuration['sms_simplegateway_user_field'] : NULL,
   );
   $form['sms_simplegateway_send']['sms_simplegateway_user_value'] = array(
     '#type' => 'textfield',
@@ -79,7 +79,7 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('Optional. Your username for this gateway account.'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_user_value'],
+    '#default_value' => isset($configuration['sms_simplegateway_user_value']) ? $configuration['sms_simplegateway_user_value'] : NULL,
   );
   $form['sms_simplegateway_send']['sms_simplegateway_pass_field'] = array(
     '#type' => 'textfield',
@@ -87,7 +87,7 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('Optional. The argument/field name for the field that holds the password. Eg: pass, password, passwd.'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_pass_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_pass_field']) ? $configuration['sms_simplegateway_pass_field'] : NULL,
   );
   $form['sms_simplegateway_send']['sms_simplegateway_pass_value'] = array(
     '#type' => 'textfield',
@@ -95,7 +95,7 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('Optional. Your password for this gateway account.'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_pass_value'],
+    '#default_value' => isset($configuration['sms_simplegateway_pass_value']) ? $configuration['sms_simplegateway_pass_value'] : NULL,
   );
   $form['sms_simplegateway_send']['sms_simplegateway_sender_field'] = array(
     '#type' => 'textfield',
@@ -103,7 +103,15 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('The argument/field name for the field that holds the sender number data. Eg: from, sender'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_sender_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_sender_field']) ? $configuration['sms_simplegateway_sender_field'] : NULL,
+  );
+  $form['sms_simplegateway_send']['sms_simplegateway_sender_value'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Sender (from) field value'),
+    '#description' => t('The default value for the sender.'),
+    '#size' => 40,
+    '#maxlength' => 255,
+    '#default_value' => isset($configuration['sms_simplegateway_sender_value']) ? $configuration['sms_simplegateway_sender_value'] : NULL,
   );
   $form['sms_simplegateway_send']['sms_simplegateway_number_field'] = array(
     '#type' => 'textfield',
@@ -111,7 +119,15 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('The argument/field name for the field that holds the number data. Eg: number, to, no'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_number_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_number_field']) ? $configuration['sms_simplegateway_number_field'] : NULL,
+  );
+  $form['sms_simplegateway_send']['sms_simplegateway_number_prefix_value'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Number (to) prefix value'),
+    '#description' => t('The value to be prefixed to the sender. Eg: country code'),
+    '#size' => 40,
+    '#maxlength' => 255,
+    '#default_value' => isset($configuration['sms_simplegateway_number_prefix_value']) ? $configuration['sms_simplegateway_number_prefix_value'] : NULL,
   );
   $form['sms_simplegateway_send']['sms_simplegateway_message_field'] = array(
     '#type' => 'textfield',
@@ -119,7 +135,15 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('The argument/field name for the field that holds the message text. Eg: message, text, content'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_message_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_message_field']) ? $configuration['sms_simplegateway_message_field'] : NULL,
+  );
+  $form['sms_simplegateway_send']['sms_simplegateway_extra_params'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Extra Parameters'),
+    '#description' => t('Any additional parameters the gateway may need. Eg: route=1'),
+    '#size' => 40,
+    '#maxlength' => 255,
+    '#default_value' => isset($configuration['sms_simplegateway_extra_params']) ? $configuration['sms_simplegateway_extra_params'] : NULL,
   );
 
   $form['sms_simplegateway_receive'] = array(
@@ -138,7 +162,7 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('The argument/field name for the field that holds the sender number. Eg: sender, from.'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_recv_number_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_recv_number_field']) ? $configuration['sms_simplegateway_recv_number_field'] : NULL,
   );
   $form['sms_simplegateway_receive']['sms_simplegateway_recv_gwnumber_field'] = array(
     '#type' => 'textfield',
@@ -146,7 +170,7 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('Optional. The argument/field name for the field that holds the gateway receiver number. Eg: to, inNumber, receiver.'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_recv_gwnumber_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_recv_gwnumber_field']) ? $configuration['sms_simplegateway_recv_gwnumber_field'] : NULL,
   );
   $form['sms_simplegateway_receive']['sms_simplegateway_recv_message_field'] = array(
     '#type' => 'textfield',
@@ -154,7 +178,7 @@ function sms_simplegateway_admin_form($configuration) {
     '#description' => t('The argument/field name for the field that holds the message. Eg: message, text, content.'),
     '#size' => 40,
     '#maxlength' => 255,
-    '#default_value' => $configuration['sms_simplegateway_recv_message_field'],
+    '#default_value' => isset($configuration['sms_simplegateway_recv_message_field']) ? $configuration['sms_simplegateway_recv_message_field'] : NULL,
   );
 
   return $form;
@@ -176,23 +200,21 @@ function sms_simplegateway_send($number, $message, $options) {
   $gateway = sms_gateways('gateway', 'simplegateway');
   $config = $gateway['configuration'];
 
-  // Lets specify a gw number
-  $sender = '';
-  if (array_key_exists('sender', $options)) {
-    $sender = $options['sender'];
+  if (is_array($options) and array_key_exists('sender', $options)) {
+    $config['sms_simplegateway_sender_value'] = $options['sender'];
   }
 
-  $query_string = http_build_query(array(
-    $config['sms_simplegateway_user_field'] => $config['sms_simplegateway_user_value'],
-    $config['sms_simplegateway_pass_field'] => $config['sms_simplegateway_pass_value'],
-    $config['sms_simplegateway_sender_field'] => $sender,
-    $config['sms_simplegateway_number_field'] => $number,
-    $config['sms_simplegateway_message_field'] => $message,
-  ));
+  $query_string = http_build_query(array_filter(array(
+      $config['sms_simplegateway_user_field'] => $config['sms_simplegateway_user_value'],
+      $config['sms_simplegateway_pass_field'] => $config['sms_simplegateway_pass_value'],
+      $config['sms_simplegateway_sender_field'] => $config['sms_simplegateway_sender_value'],
+      $config['sms_simplegateway_number_field'] => $config['sms_simplegateway_number_prefix_value'] . $number,
+      $config['sms_simplegateway_message_field'] => $message,
+    ))) . '&' . $config['sms_simplegateway_extra_params'];
 
   switch ($config['sms_simplegateway_method']) {
     case 'GET':
-      $http_result = drupal_http_request($config['sms_simplegateway_base_url'] . '?' . $query_string);
+      $http_result = drupal_http_request($config['sms_simplegateway_base_url'] . $query_string);
       break;
     case 'POST':
       $http_result = drupal_http_request($config['sms_simplegateway_base_url'], array(
@@ -204,7 +226,7 @@ function sms_simplegateway_send($number, $message, $options) {
   }
 
   // Check for HTTP errors
-  if (isset($http_result->error)) {
+  if (property_exists($http_result, 'error') && ($http_result->code <= 200 || $http_result->code >= 299)) {
     return array(
       'status' => FALSE,
       'message' => t('An error occurred during the HTTP request: @error',
@@ -212,7 +234,7 @@ function sms_simplegateway_send($number, $message, $options) {
     );
   }
 
-  if ($http_result->data) {
+  if (property_exists($http_result, 'data')) {
     // Test the HTTP return code
     if ($http_result->code >= 200 && $http_result->code <= 299) {
       // Prepare a good response array
