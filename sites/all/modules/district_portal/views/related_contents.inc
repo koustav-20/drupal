@@ -26,7 +26,7 @@ $handler->display->display_options['style_options']['row_class_special'] = FALSE
 $handler->display->display_options['row_plugin'] = 'fields';
 $handler->display->display_options['row_options']['inline'] = array(
   'title' => 'title',
-  'section' => 'section',
+  'type' => 'type',
 );
 $handler->display->display_options['row_options']['hide_empty'] = TRUE;
 /* Field: Content: Title */
@@ -36,6 +36,14 @@ $handler->display->display_options['fields']['title']['field'] = 'title';
 $handler->display->display_options['fields']['title']['relationship'] = 'nid';
 $handler->display->display_options['fields']['title']['label'] = '';
 $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+/* Field: Content: Type */
+$handler->display->display_options['fields']['type']['id'] = 'type';
+$handler->display->display_options['fields']['type']['table'] = 'node';
+$handler->display->display_options['fields']['type']['field'] = 'type';
+$handler->display->display_options['fields']['type']['label'] = '';
+$handler->display->display_options['fields']['type']['alter']['alter_text'] = TRUE;
+$handler->display->display_options['fields']['type']['alter']['text'] = '([type])';
+$handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
 /* Sort criterion: Content: Nid */
 $handler->display->display_options['sorts']['nid']['id'] = 'nid';
 $handler->display->display_options['sorts']['nid']['table'] = 'node';
