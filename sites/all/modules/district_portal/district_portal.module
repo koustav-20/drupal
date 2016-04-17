@@ -146,6 +146,22 @@ function district_portal_image_default_styles() {
     )
   );
 
+  // Default image preset for Teasers
+  $styles['district_portal_teaser'] = array(
+    'label' => 'Teaser (160x100)',
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 160,
+          'height' => 100,
+          'upscale' => 1,
+        ),
+        'weight' => 0
+      )
+    )
+  );
+
   return $styles;
 }
 
