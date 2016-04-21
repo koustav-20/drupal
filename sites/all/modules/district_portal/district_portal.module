@@ -309,6 +309,15 @@ function district_portal_tokens($type, $tokens, $data = array(), $options = arra
   return $replacements;
 }
 
+/**
+ * Implements hook_file_download().
+ */
+function district_portal_file_download($uri) {
+  if(strpos($uri,"default_images")>0){
+    return array("Accept"=>"Accept");
+  }
+
+}
 
 /**
  * @} End of "defgroup district_portal".
