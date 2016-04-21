@@ -7433,6 +7433,16 @@ body {
   height: auto !important;
   padding-bottom: 110px;
 }
+.card-portrait {
+  width: 240px;
+  padding: 10px;
+  float: left;
+}
+.card-landscape {
+  width: 320px;
+  padding: 10px;
+  float: left;
+}
 #niclogo {
   position: absolute;
   right: 50px;
