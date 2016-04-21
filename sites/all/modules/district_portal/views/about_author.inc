@@ -71,7 +71,8 @@ $handler->display->display_options['fields']['access']['table'] = 'users';
 $handler->display->display_options['fields']['access']['field'] = 'access';
 $handler->display->display_options['fields']['access']['relationship'] = 'uid';
 $handler->display->display_options['fields']['access']['date_format'] = 'today time ago';
-$handler->display->display_options['fields']['access']['second_date_format'] = 'short';
+$handler->display->display_options['fields']['access']['second_date_format_custom'] = 'd/m/Y H:i:s A';
+$handler->display->display_options['fields']['access']['second_date_format'] = 'custom';
 /* Sort criterion: Content: Post date */
 $handler->display->display_options['sorts']['created']['id'] = 'created';
 $handler->display->display_options['sorts']['created']['table'] = 'node';
