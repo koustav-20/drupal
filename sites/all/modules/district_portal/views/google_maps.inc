@@ -17,18 +17,18 @@ $handler->display->display_options['access']['type'] = 'perm';
 $handler->display->display_options['cache']['type'] = 'none';
 $handler->display->display_options['query']['type'] = 'views_query';
 $handler->display->display_options['exposed_form']['type'] = 'basic';
-$handler->display->display_options['pager']['type'] = 'some';
-$handler->display->display_options['pager']['options']['items_per_page'] = '5';
+$handler->display->display_options['pager']['type'] = 'none';
+$handler->display->display_options['pager']['options']['offset'] = '0';
 $handler->display->display_options['style_plugin'] = 'default';
 $handler->display->display_options['row_plugin'] = 'fields';
-/* Field: Content: LatLong */
-$handler->display->display_options['fields']['field_latlong']['id'] = 'field_latlong';
-$handler->display->display_options['fields']['field_latlong']['table'] = 'field_data_field_latlong';
-$handler->display->display_options['fields']['field_latlong']['field'] = 'field_latlong';
-$handler->display->display_options['fields']['field_latlong']['label'] = '';
-$handler->display->display_options['fields']['field_latlong']['element_label_colon'] = FALSE;
-$handler->display->display_options['fields']['field_latlong']['type'] = 'simple_gmap';
-$handler->display->display_options['fields']['field_latlong']['settings'] = array(
+/* Field: Content: Google Maps Location */
+$handler->display->display_options['fields']['field_google_maps_location']['id'] = 'field_google_maps_location';
+$handler->display->display_options['fields']['field_google_maps_location']['table'] = 'field_data_field_google_maps_location';
+$handler->display->display_options['fields']['field_google_maps_location']['field'] = 'field_google_maps_location';
+$handler->display->display_options['fields']['field_google_maps_location']['label'] = '';
+$handler->display->display_options['fields']['field_google_maps_location']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['field_google_maps_location']['type'] = 'simple_gmap';
+$handler->display->display_options['fields']['field_google_maps_location']['settings'] = array(
   'include_map' => 1,
   'include_static_map' => 0,
   'iframe_width' => '220',
@@ -55,13 +55,12 @@ $handler->display->display_options['arguments']['nid']['default_argument_type'] 
 $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
 $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
 $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-/* Filter criterion: Content: Published */
-$handler->display->display_options['filters']['status']['id'] = 'status';
-$handler->display->display_options['filters']['status']['table'] = 'node';
-$handler->display->display_options['filters']['status']['field'] = 'status';
-$handler->display->display_options['filters']['status']['value'] = 1;
-$handler->display->display_options['filters']['status']['group'] = 1;
-$handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+/* Filter criterion: Content: Google Maps Location (field_google_maps_location) */
+$handler->display->display_options['filters']['field_google_maps_location_value']['id'] = 'field_google_maps_location_value';
+$handler->display->display_options['filters']['field_google_maps_location_value']['table'] = 'field_data_field_google_maps_location';
+$handler->display->display_options['filters']['field_google_maps_location_value']['field'] = 'field_google_maps_location_value';
+$handler->display->display_options['filters']['field_google_maps_location_value']['operator'] = 'longerthan';
+$handler->display->display_options['filters']['field_google_maps_location_value']['value'] = '1';
 
 /* Display: Block */
 $handler = $view->new_display('block', 'Block', 'block');
