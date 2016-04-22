@@ -1,4 +1,4 @@
-<div class="card-portrait">
+<div class="card-portrait pull-left">
   <div class="thumbnail">
     <img class="img-responsive"
       src="<?php print file_create_url($node->field_photograph[LANGUAGE_NONE][0]['uri']); ?>"
