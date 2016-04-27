@@ -1,7 +1,7 @@
 #niclogo {
   position: absolute;
   right: 50px;
-  bottom: 40px;
+  bottom: 45px;
   height: 66px;
   width: 153px;
   background-image: url("../images/niclogo.png");
@@ -14,11 +14,27 @@
   margin: 0;
   bottom: 0;
   border: none;
+  [class^="col"] {
+    .thumbnail;
+    opacity: 0.8;
+    background-color: @body-bg;
+    margin: 10px 10px 0 10px;
+  }
+  li {
+    padding: 5px;
+  }
 }
 
 #footer-links {
-  padding: 10px;
+  padding: 0;
   margin-top: 0;
+}
+
+.link-header {
+  display: block;
+  border-bottom: 4px solid @brand-info;
+  padding: 5px;
+  margin-bottom: 5px;
 }
 
 #grass {

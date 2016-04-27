@@ -51,13 +51,39 @@ body {
   height: auto !important;
   padding-bottom: 110px;
 }
-.card-portrait{
-  width: 240px;
+
+.card {
   padding: 10px;
-  float: left;
 }
-.card-landscape{
+
+.card-portrait {
+  .card;
+  width: 240px;
+}
+
+.card-landscape {
+  .card;
   width: 320px;
-  padding: 10px;
-  float: left;
+}
+
+.block-menu {
+
+  border-width: 1px 1px 1px 5px;
+  border-left-color: @brand-warning;
+}
+
+.block-title {
+  border-bottom: 4px solid @brand-success;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.region-sidebar-first, .region-sidebar-second {
+  .thumbnail();
+  padding: 20px 20px 20px 15px;
+  border-left-width: 5px;
+  border-left-color: @brand-warning;
+  .block-title {
+    font-size: @font-size-h4;
+  }
 }

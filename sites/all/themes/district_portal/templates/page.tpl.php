@@ -95,18 +95,20 @@ $mobile_nav = $secondary_nav;
       </div>
     <?php endif; ?>
 
-    <?php if ($logo): ?>
-      <a class="logo-lg pull-left" href="<?php print $front_page; ?>"
-         title="<?php print t('Home'); ?>">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
-      </a>
-    <?php endif; ?>
     <?php if (!empty($site_name)): ?>
       <div class="site-name">
 
-        <a class="inset-text-effect" href="<?php print $front_page; ?>"
-           title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+        <p>
+          <?php if ($logo): ?>
+            <a class="logo-lg pull-left" href="<?php print $front_page; ?>"
+               title="<?php print t('Home'); ?>">
+              <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
+            </a>
+          <?php endif; ?>
 
+          <a class="inset-text-effect" href="<?php print $front_page; ?>"
+             title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+        </p>
 
         <?php if (!empty($site_slogan)): ?>
           <p class="lead"><?php print $site_slogan; ?></p>
