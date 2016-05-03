@@ -1,7 +1,7 @@
 #niclogo {
   position: absolute;
   right: 50px;
-  bottom: 40px;
+  bottom: 20px;
   height: 66px;
   width: 153px;
   background-image: url("../images/niclogo.png");
@@ -14,27 +14,71 @@
   margin: 0;
   bottom: 0;
   border: none;
+  /*[class^="col"] {
+    .thumbnail;
+    opacity: 0.8;
+    background-color: @body-bg;
+    margin: 10px 10px 0 10px;
+  }*/
+  li {
+    padding: 5px;
+  }
 }
 
 #footer-links {
+  background-color: @brand-primary;
+  color: white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  font-weight: bold;
   padding: 10px;
-  margin-top: 0;
+  ul {
+    padding: 5px 0 0 0;
+    a {
+      color: @brand-warning;
+      padding: 5px;
+    }
+    li {
+      padding: 0;
+    }
+  }
+}
+
+.link-header {
+  display: block;
+  font-size: @font-size-h5;
+  border-bottom: 4px solid @brand-success;
+  padding: 5px;
 }
 
 #grass {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 20px;
+  position: relative;
+  top: 0;
   width: 100%;
   height: 104px;
   background: url("../images/grass-s.png") no-repeat left bottom,
   url("../images/grass-s.png") repeat-x left 83px,
   url("../images/grass-r.png") no-repeat right bottom;
-  z-index: -1000;
+  z-index: @zindex-modal-background;
 }
 
 #copyright {
-  color: @text-muted;
+  padding: 5px;
+  color: white;
+  background-color: #545454;
   text-align: center;
+}
+
+.main-container {
+  @media (min-width: @screen-desktop) {
+    padding-bottom: 220px;
+  }
+  @media (max-width: @screen-desktop) {
+    padding-bottom: 300px;
+  }
+  @media (max-width: @screen-tablet) {
+    aside:last-child {
+      padding-bottom: 200px;
+    }
+  }
 }
