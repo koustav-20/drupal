@@ -257,19 +257,11 @@ function district_portal_form_user_profile_form_alter(&$form, &$form_state) {
   }
 }
 
-/**
- * Implements hook_menu_site_status_alter().
- */
-function encrypt_submissions_menu_site_status_alter(&$menu_site_status, $path) {
-  if('encrypt-submissions/generate-keypair' === $path){
-    $menu_site_status = MENU_SITE_ONLINE;
-  }
-}
-
 function district_portal_menu_site_status_alter(&$menu_site_status, $path) {
 
   $allowed_pathes = array(
     "user/register",
+    "encrypt-submissions/generate-keypair"
   );
   if ($menu_site_status == MENU_SITE_OFFLINE && user_is_anonymous() ) {
     if( in_array( $path, $allowed_pathes ) ) {
