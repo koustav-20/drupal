@@ -7352,7 +7352,6 @@ table .checkbox input[type="checkbox"] {
 .site-name .lead {
   clear: both;
   font-style: italic;
-  font-family: italic;
   font-size: 30px;
   display: inline-block;
   color: #ffe716;
@@ -7368,12 +7367,13 @@ table .checkbox input[type="checkbox"] {
   white-space: pre;
 }
 .inset-text-effect:hover {
+  text-underline: none;
   color: #5cb85c;
 }
 #site-header {
   height: 170px;
   padding-left: 120px;
-  background: #5155dd;
+  background: #5155dd url("../images/header.png") repeat-x right;
 }
 .block-search {
   padding: 12px;
@@ -7565,6 +7565,12 @@ body {
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
+.node-page .card {
+  margin: 10px;
+}
+.node-page .card .block-title {
+  border-bottom: 4px solid #5cb85c;
+}
 .region-sidebar-first,
 .region-sidebar-second {
   display: block;
@@ -7607,7 +7613,7 @@ a.region-sidebar-second.active {
 .region-sidebar-first ul li a,
 .region-sidebar-second ul li a {
   color: black;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin: 0;
   padding: 8px;

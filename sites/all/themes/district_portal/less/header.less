@@ -10,7 +10,6 @@
     clear: both;
     //.thumbnail;
     font-style: italic;
-    font-family: italic;
     font-size: @font-size-h2;
     display: inline-block;
     //background-color: @brand-primary;
@@ -28,6 +27,7 @@
   text-overflow: clip;
   white-space: pre;
   &:hover {
+    text-underline: none;
     color: @brand-success;
   }
 }
@@ -37,7 +37,7 @@
   height: 170px;
   padding-left: 120px;
   //, url("../images/header.png") repeat-x right -170px;
-  background: #5155dd;// url("../images/Collectorate.jpg") no-repeat 800px;
+  background: #5155dd url("../images/header.png") repeat-x right;
 }
 
 .page-header {
@@ -77,8 +77,8 @@
 }
 
 //NavBar Custom Styling
-@bgDefault: @brand-primary;//#6d8524;
-@bgHighlight: @brand-warning;//#8ea743;
+@bgDefault: @brand-primary; //#6d8524;
+@bgHighlight: @brand-warning; //#8ea743;
 @colDefault: #ffffff;
 @colHighlight: #000000;
 @dropDown: true;
