@@ -7533,7 +7533,7 @@ html {
 }
 body {
   min-height: 100%;
-  background-color: #e9e9e9;
+  background-color: #ffffff;
 }
 .main-container {
   height: auto !important;
@@ -7622,6 +7622,16 @@ a.region-sidebar-second.active {
   font-style: italic;
   font-family: italic;
 }
+.flex-direction-nav a {
+  height: 48px;
+}
+.flexslider .flex-direction-nav a,
+.flexslider .flex-direction-nav a {
+  display: block;
+}
+.flex-direction-nav .flex-next {
+  right: 0;
+}
 #niclogo {
   position: absolute;
   right: 50px;
@@ -7688,16 +7698,16 @@ a.region-sidebar-second.active {
 }
 @media (min-width: 992px) {
   .main-container {
-    padding-bottom: 220px;
+    padding-bottom: 230px;
   }
 }
 @media (max-width: 992px) {
   .main-container {
-    padding-bottom: 300px;
+    padding-bottom: 320px;
   }
 }
 @media (max-width: 768px) {
   .main-container aside:last-child {
-    padding-bottom: 200px;
+    padding-bottom: 180px;
   }
 }
