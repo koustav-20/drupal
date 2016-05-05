@@ -11,33 +11,37 @@
  * @see bartik_process_maintenance_page()
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
+
+<!DOCTYPE html>
+<html<?php print $html_attributes; ?><?php print $rdf_namespaces; ?>>
 <head>
+  <link rel="profile" href="<?php print $grddl_profile; ?>"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <?php print $scripts; ?>
 </head>
-<body class="<?php print $classes; ?>" <?php print $attributes;?>>
-
-  <div id="page-wrapper"><div id="page">
-
-    <div id="main-wrapper"><div id="main" class="clearfix">
-      <div id="content" class="column"><div class="section">
-        <a id="main-content"></a>
-        <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-        <?php print $content; ?>
-        <?php if ($messages): ?>
-          <div id="messages"><div class="section clearfix">
-            <?php print $messages; ?>
-          </div></div> <!-- /.section, /#messages -->
-        <?php endif; ?>
-      </div></div> <!-- /.section, /#content -->
-    </div></div> <!-- /#main, /#main-wrapper -->
-
-  </div></div> <!-- /#page, /#page-wrapper -->
-
+<body<?php print $body_attributes; ?>>
+<div class="maintenance-block">
+  <?php if ($title): ?>
+    <h1>
+      <?php print $title; ?>
+    </h1>
+  <?php endif; ?>
+  <span><?php print $content; ?></span>
+  <?php if ($messages): ?>
+  <div id="messages">
+    <div class="section clearfix">
+      <?php print $messages; ?>
+    </div>
+  </div>
+  <?php endif; ?>
+</div>
 </body>
 </html>

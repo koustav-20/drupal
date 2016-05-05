@@ -131,3 +131,22 @@ body {
 .flex-direction-nav .flex-next {
   right: 0;
 }
+
+.maintenance-block {
+@media (min-width: @screen-tablet) {
+  .thumbnail;
+  position: absolute;
+  left: 50%;
+  padding: 50px;
+  height: 300px;
+  margin-top: 100px;
+
+  width: 600px;
+  margin-left: -300px;
+}
+  @media (max-width: @screen-tablet) {
+    padding: 20px;
+    
+  }
+
+}

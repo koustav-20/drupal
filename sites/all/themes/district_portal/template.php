@@ -21,5 +21,5 @@ function district_portal_preprocess_maintenance_page(&$variables) {
   // Template suggestion for live site (in maintenance mode)
     $variables['theme_hook_suggestion'] = 'maintenance_page';
   }
-  drupal_add_css(drupal_get_path('theme', 'bartik') . '/css/maintenance-page.css');
+  //drupal_add_css(drupal_get_path('theme', 'bartik') . '/css/maintenance-page.css');
 }

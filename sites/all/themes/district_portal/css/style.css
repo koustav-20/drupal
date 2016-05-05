@@ -7632,6 +7632,46 @@ a.region-sidebar-second.active {
 .flex-direction-nav .flex-next {
   right: 0;
 }
+@media (min-width: 768px) {
+  .maintenance-block {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.428571429;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    -webkit-transition: border 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+    position: absolute;
+    left: 50%;
+    padding: 50px;
+    height: 300px;
+    margin-top: 100px;
+    width: 600px;
+    margin-left: -300px;
+  }
+  .maintenance-block > img,
+  .maintenance-block a > img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  a.maintenance-block:hover,
+  a.maintenance-block:focus,
+  a.maintenance-block.active {
+    border-color: #337ab7;
+  }
+  .maintenance-block .caption {
+    padding: 9px;
+    color: #333333;
+  }
+}
+@media (max-width: 768px) {
+  .maintenance-block {
+    padding: 20px;
+  }
+}
 #niclogo {
   position: absolute;
   right: 50px;
