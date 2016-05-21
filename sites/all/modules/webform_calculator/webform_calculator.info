@@ -7,9 +7,9 @@ package = Webform
 dependencies[] = token
 dependencies[] = webform (>=4.x)
 
-; Information added by Drupal.org packaging script on 2015-09-29
-version = "7.x-2.0-alpha2+13-dev"
+; Information added by Drupal.org packaging script on 2015-10-15
+version = "7.x-2.0-alpha3"
 core = "7.x"
 project = "webform_calculator"
-datestamp = "1443550146"
+datestamp = "1444912140"
 
