@@ -132,7 +132,7 @@ function district_portal_image_default_styles() {
 
   // Default image preset for FlexSlider
   $styles['district_portal_slide_full'] = array(
-    'label' => 'Slide (960x400)',
+    'label' => 'Slide (1280x500)',
     'effects' => array(
       array(
         'name' => 'image_scale_and_crop',
@@ -162,6 +162,21 @@ function district_portal_image_default_styles() {
     )
   );
 
+  // Default image preset for Photographs
+  $styles['photograph'] = array(
+    'label' => 'Photograph (120x150)',
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 120,
+          'height' => 150,
+          'upscale' => 1,
+        ),
+        'weight' => 0
+      )
+    )
+  );
   return $styles;
 }
 
