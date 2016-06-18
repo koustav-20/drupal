@@ -10,3 +10,4 @@ sites/*/.idea/*
 /sites/all/modules/devel/*
 /sites/.idea/*
 .idea/*
+CHANGELOG.txt
