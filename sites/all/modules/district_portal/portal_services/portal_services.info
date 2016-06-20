@@ -1,0 +1,8 @@
+name = District Portal Service
+description = Service Endpoints for District Portal of Paschim Medinipur
+package = "District Portal"
+core = 7.x
+
+dependencies[] = services
+
+version = DISTRICT_PORTAL_SERVICE_VERSION

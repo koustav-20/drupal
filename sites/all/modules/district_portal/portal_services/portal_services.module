@@ -1,0 +1,40 @@
+<?php
+define('DISTRICT_PORTAL_SERVICE_VERSION', '7.x-0.1');
+
+/**
+ * @file
+ * Module file for smsgw.
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function portal_services_ctools_plugin_api($owner, $api) {
+  if ($owner == 'services' && $api == 'services') {
+    return array(
+      'version' => 3,
+    );
+  }
+}
+
+/**
+ * Implements hook_default_services_endpoint().
+ */
+function portal_services_default_services_endpoint() {
+  // Check for all endpoint files in endpoints directory
+  $files = file_scan_directory(
+    drupal_get_path('module', 'district_portal') . '/portal_services/endpoints',
+    '/.*\.inc$/'
+  );
+
+  // Add view to list of endpoints
+  foreach ($files as $filepath => $file) {
+    require $filepath;
+    if (isset($endpoint)) {
+      $endpoints[$endpoint->name] = $endpoint;
+    }
+  }
+
+  // At the end, return array of default endpoints.
+  return $endpoints;
+}
