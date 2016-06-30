@@ -7479,6 +7479,20 @@ table .checkbox input[type="checkbox"] {
 .navbar-default .navbar-link:hover {
   color: #000000;
 }
+@media (max-width: 1200px) {
+  #site-header {
+    padding-left: 10px;
+  }
+  .inset-text-effect {
+    font: normal 41px/1 "Aladin", Helvetica, sans-serif;
+  }
+  .site-name {
+    font-size: 24px;
+  }
+  .site-name .lead {
+    font-size: 18px;
+  }
+}
 @media (max-width: 768px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;
