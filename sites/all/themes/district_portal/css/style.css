@@ -7686,6 +7686,11 @@ a.region-sidebar-second.active {
     padding: 20px;
   }
 }
+.promo-logo-btn {
+  height: 90px;
+  width: 270px;
+  margin-bottom: 20px;
+}
 #niclogo {
   position: absolute;
   right: 50px;
