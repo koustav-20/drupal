@@ -7646,6 +7646,9 @@ a.region-sidebar-second.active {
 .flex-direction-nav .flex-next {
   right: 0;
 }
+.maintenance-block {
+  display: inline-block;
+}
 @media (min-width: 768px) {
   .maintenance-block {
     display: block;
@@ -7658,13 +7661,10 @@ a.region-sidebar-second.active {
     -webkit-transition: border 0.2s ease-in-out;
     -o-transition: border 0.2s ease-in-out;
     transition: border 0.2s ease-in-out;
-    position: absolute;
-    left: 50%;
-    padding: 50px;
-    height: 300px;
-    margin-top: 100px;
-    width: 600px;
-    margin-left: -300px;
+    padding: 10px 50px;
+    margin: 7% auto 0;
+    max-width: 990px;
+    min-height: 300px;
   }
   .maintenance-block > img,
   .maintenance-block a > img {

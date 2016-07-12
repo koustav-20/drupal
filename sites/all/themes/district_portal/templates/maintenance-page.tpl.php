@@ -13,7 +13,7 @@
 ?>
 
 <!DOCTYPE html>
-<html<?php print $html_attributes; ?><?php print $rdf_namespaces; ?>>
+<html<?php print $rdf_namespaces; ?>>
 <head>
   <link rel="profile" href="<?php print $grddl_profile; ?>"/>
   <meta charset="utf-8">
@@ -30,7 +30,7 @@
 <body<?php print $body_attributes; ?>>
 <div class="maintenance-block">
   <?php if ($title): ?>
-    <h1>
+    <h1 class="block-title">
       <?php print $title; ?>
     </h1>
   <?php endif; ?>
