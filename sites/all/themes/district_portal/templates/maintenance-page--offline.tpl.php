@@ -13,13 +13,12 @@
 ?>
 
 <!DOCTYPE html>
-<html<?php print $rdf_namespaces; ?>>
+<html>
 <head>
-  <link rel="profile" href="<?php print $grddl_profile; ?>"/>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php print $head; ?>
-  <title>Oops!</title>
+  <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
@@ -27,9 +26,9 @@
   <![endif]-->
   <?php print $scripts; ?>
 </head>
-<body<?php print $body_attributes; ?>>
+<body>
 <div class="maintenance-block">
-  <h1>Oops!</h1>
+  <h1><?php print $title; ?></h1>
   <span><?php print $content; ?></span>
 </div>
 </body>

@@ -5,6 +5,7 @@
 .site-name {
   padding: 30px 0 0 10px;
   font-size: @font-size-h2;
+  text-align: center;
   color: white;
   .lead {
     clear: both;
@@ -13,31 +14,32 @@
     font-size: @font-size-h2;
     display: inline-block;
     //background-color: @brand-primary;
-    color: #ffe716;
   }
 }
 
 .inset-text-effect {
   display: inline-block;
   border: none;
-  font: normal 61px/1 "Aladin", Helvetica, sans-serif;
-  color: orange;
+  //font: normal 61px/1 "Aladin", Helvetica, sans-serif;
+  color: white;
+  letter-spacing: 10px;
   text-align: center;
   -o-text-overflow: clip;
   text-overflow: clip;
   white-space: pre;
   &:hover {
     text-underline: none;
-    color: @brand-success;
+    //color: @brand-success;
   }
 }
 
 #site-header {
   //.img-rounded;
-  height: 170px;
-  padding-left: 120px;
+  height: 110px;
+  text-align: center;
+  //padding-left: 120px;
   //, url("../images/header.png") repeat-x right -170px;
-  background: #5155dd url("../images/header.png") repeat-x right;
+  background: url("../images/bannerSimple.jpg") no-repeat center bottom; //#51c6d8
 }
 
 .page-header {
@@ -164,15 +166,15 @@
 
 @media (max-width: @screen-lg) {
   #site-header {
-    padding-left: 10px;
+    //padding-left: 10px;
   }
   .inset-text-effect {
-    font: normal 41px/1 "Aladin", Helvetica, sans-serif;
+    //font: normal 41px/1 "Aladin", Helvetica, sans-serif;
   }
   .site-name {
-    font-size: @font-size-h3;
+    //font-size: @font-size-h3;
     .lead {
-      font-size: @font-size-h4;
+      //font-size: @font-size-h4;
     }
   }
 }

@@ -94,28 +94,6 @@ $mobile_nav = $secondary_nav;
       </nav>
     </div>
   <?php endif; ?>
-
-  <?php if (!empty($site_name)): ?>
-    <div class="site-name">
-
-      <p>
-        <?php if ($logo): ?>
-          <a class="logo-lg pull-left" href="<?php print $front_page; ?>"
-             title="<?php print t('Home'); ?>">
-            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
-          </a>
-        <?php endif; ?>
-
-        <a class="inset-text-effect" href="<?php print $front_page; ?>"
-           title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
-      </p>
-
-      <?php if (!empty($site_slogan)): ?>
-        <p class="lead"><?php print $site_slogan; ?></p>
-      <?php endif; ?>
-
-    </div>
-  <?php endif; ?>
 </div>
 
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
@@ -165,7 +143,7 @@ $mobile_nav = $secondary_nav;
   </div>
 </header>
 
-<div class="main-container  <?php print $container_class; ?>">
+<div class="main-container <?php print $container_class; ?>">
 
   <header role="banner" id="page-header">
     <?php print render($page['header']); ?>
