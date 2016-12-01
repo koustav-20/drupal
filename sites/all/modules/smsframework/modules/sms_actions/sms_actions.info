@@ -6,9 +6,9 @@ dependencies[] = trigger
 core = 7.x
 files[] = sms_actions.test
 
-; Information added by Drupal.org packaging script on 2016-09-25
-version = "7.x-1.0-alpha1+7-dev"
+; Information added by Drupal.org packaging script on 2016-10-30
+version = "7.x-1.0-beta1"
 core = "7.x"
 project = "smsframework"
-datestamp = "1474815841"
+datestamp = "1477859051"
 
