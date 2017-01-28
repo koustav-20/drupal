@@ -19,16 +19,22 @@ $handler->display->display_options['cache']['type'] = 'none';
 $handler->display->display_options['query']['type'] = 'views_query';
 $handler->display->display_options['exposed_form']['type'] = 'basic';
 $handler->display->display_options['pager']['type'] = 'some';
-$handler->display->display_options['pager']['options']['items_per_page'] = '5';
+$handler->display->display_options['pager']['options']['items_per_page'] = '1';
+$handler->display->display_options['pager']['options']['offset'] = '0';
 $handler->display->display_options['style_plugin'] = 'default';
+$handler->display->display_options['style_options']['default_row_class'] = FALSE;
+$handler->display->display_options['style_options']['row_class_special'] = FALSE;
 $handler->display->display_options['row_plugin'] = 'fields';
+$handler->display->display_options['row_options']['default_field_elements'] = FALSE;
 /* Field: File: Rendered */
 $handler->display->display_options['fields']['rendered']['id'] = 'rendered';
 $handler->display->display_options['fields']['rendered']['table'] = 'file_managed';
 $handler->display->display_options['fields']['rendered']['field'] = 'rendered';
 $handler->display->display_options['fields']['rendered']['label'] = '';
 $handler->display->display_options['fields']['rendered']['element_label_colon'] = FALSE;
-$handler->display->display_options['fields']['rendered']['file_view_mode'] = 'preview';
+$handler->display->display_options['fields']['rendered']['element_default_classes'] = FALSE;
+$handler->display->display_options['fields']['rendered']['hide_alter_empty'] = FALSE;
+$handler->display->display_options['fields']['rendered']['file_view_mode'] = 'full';
 /* Contextual filter: File: File ID */
 $handler->display->display_options['arguments']['fid']['id'] = 'fid';
 $handler->display->display_options['arguments']['fid']['table'] = 'file_managed';

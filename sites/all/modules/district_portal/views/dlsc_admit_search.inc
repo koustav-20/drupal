@@ -341,7 +341,7 @@ $handler->display->display_options['fields']['views_conditional']['if'] = 'value
 $handler->display->display_options['fields']['views_conditional']['condition'] = '1';
 $handler->display->display_options['fields']['views_conditional']['equalto'] = 'Yes';
 $handler->display->display_options['fields']['views_conditional']['then'] = '<div class="alert alert-success">
-  <strong>Current Status:</strong> Approved. <a href="/dlsc/admit-card-ea?sid=[sid]&mobile=[value_7]">Download your provisional AdmitCard in PDF</a>.
+  <strong>Current Status:</strong> Approved. <a href="/dlsc/admit-card-ns?sid=[sid]&mobile=[value_7]">Download your provisional AdmitCard in PDF</a>.
 </div>';
 $handler->display->display_options['fields']['views_conditional']['or'] = '<div class="alert alert-danger">
   <strong>Current Status:</strong>[value_2]
