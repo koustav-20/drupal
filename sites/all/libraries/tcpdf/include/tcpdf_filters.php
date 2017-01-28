@@ -1,9 +1,9 @@
 <?php
 //============================================================+
 // File name   : tcpdf_filters.php
-// Version     : 1.0.001
+// Version     : 1.0.000
 // Begin       : 2011-05-23
-// Last Update : 2014-04-25
+// Last Update : 2013-03-17
 // Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
 // License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
@@ -37,7 +37,7 @@
  * This is a PHP class for decoding common PDF filters (PDF 32000-2008 - 7.4 Filters).<br>
  * @package com.tecnick.tcpdf
  * @author Nicola Asuni
- * @version 1.0.001
+ * @version 1.0.000
  */
 
 /**
@@ -45,7 +45,7 @@
  * This is a PHP class for decoding common PDF filters (PDF 32000-2008 - 7.4 Filters).<br>
  * @package com.tecnick.tcpdf
  * @brief This is a PHP class for decoding common PDF filters.
- * @version 1.0.001
+ * @version 1.0.000
  * @author Nicola Asuni - info@tecnick.com
  */
 class TCPDF_FILTERS {
@@ -148,7 +148,7 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterASCIIHexDecode($data) {
-		// initialize string to return
+		// intialize string to return
 		$decoded = '';
 		// all white-space characters shall be ignored
 		$data = preg_replace('/[\s]/', '', $data);
@@ -167,12 +167,12 @@ class TCPDF_FILTERS {
 				// EOD shall behave as if a 0 (zero) followed the last digit
 				$data = substr($data, 0, -1).'0'.substr($data, -1);
 			} else {
-				self::Error('decodeFilterASCIIHexDecode: invalid code');
+				self::Error('decodeASCIIHex: invalid code');
 			}
 		}
 		// check for invalid characters
 		if (preg_match('/[^a-fA-F\d]/', $data) > 0) {
-			self::Error('decodeFilterASCIIHexDecode: invalid code');
+			self::Error('decodeASCIIHex: invalid code');
 		}
 		// get one byte of binary data for each pair of ASCII hexadecimal digits
 		$decoded = pack('H*', $data);
@@ -188,7 +188,7 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterASCII85Decode($data) {
-		// initialize string to return
+		// intialize string to return
 		$decoded = '';
 		// all white-space characters shall be ignored
 		$data = preg_replace('/[\s]/', '', $data);
@@ -207,7 +207,7 @@ class TCPDF_FILTERS {
 		$data_length = strlen($data);
 		// check for invalid characters
 		if (preg_match('/[^\x21-\x75,\x74]/', $data) > 0) {
-			self::Error('decodeFilterASCII85Decode: invalid code');
+			self::Error('decodeASCII85: invalid code');
 		}
 		// z sequence
 		$zseq = chr(0).chr(0).chr(0).chr(0);
@@ -224,7 +224,7 @@ class TCPDF_FILTERS {
 				if ($group_pos == 0) {
 					$decoded .= $zseq;
 				} else {
-					self::Error('decodeFilterASCII85Decode: invalid code');
+					self::Error('decodeASCII85: invalid code');
 				}
 			} else {
 				// the value represented by a group of 5 characters should never be greater than 2^32 - 1
@@ -256,7 +256,7 @@ class TCPDF_FILTERS {
 				break;
 			}
 			case 1: {
-				self::Error('decodeFilterASCII85Decode: invalid code');
+				self::Error('decodeASCII85: invalid code');
 				break;
 			}
 		}
@@ -272,7 +272,7 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterLZWDecode($data) {
-		// initialize string to return
+		// intialize string to return
 		$decoded = '';
 		// data length
 		$data_length = strlen($data);
@@ -320,12 +320,12 @@ class TCPDF_FILTERS {
 				if ($index < $dix) {
 					// index exist on dictionary
 					$decoded .= $dictionary[$index];
-					$dic_val = $dictionary[$prev_index].$dictionary[$index][0];
+					$dic_val = $dictionary[$prev_index].$dictionary[$index]{0};
 					// store current index
 					$prev_index = $index;
 				} else {
 					// index do not exist on dictionary
-					$dic_val = $dictionary[$prev_index].$dictionary[$prev_index][0];
+					$dic_val = $dictionary[$prev_index].$dictionary[$prev_index]{0};
 					$decoded .= $dic_val;
 				}
 				// update dictionary
@@ -353,10 +353,10 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterFlateDecode($data) {
-		// initialize string to return
-		$decoded = @gzuncompress($data);
+		// intialize string to return
+		$decoded = gzuncompress($data);
 		if ($decoded === false) {
-			self::Error('decodeFilterFlateDecode: invalid code');
+			self::Error('decodeFlate: invalid code');
 		}
 		return $decoded;
 	}
@@ -369,7 +369,7 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterRunLengthDecode($data) {
-		// initialize string to return
+		// intialize string to return
 		$decoded = '';
 		// data length
 		$data_length = strlen($data);
@@ -398,7 +398,7 @@ class TCPDF_FILTERS {
 	}
 
 	/**
-	 * CCITTFaxDecode (NOT IMPLEMETED - RETURN AN EXCEPTION)
+	 * CCITTFaxDecode (NOT IMPLEMETED)
 	 * Decompresses data encoded using the CCITT facsimile standard, reproducing the original data (typically monochrome image data at 1 bit per pixel).
 	 * @param $data (string) Data to decode.
 	 * @return Decoded data string.
@@ -406,12 +406,11 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterCCITTFaxDecode($data) {
-		self::Error('~decodeFilterCCITTFaxDecode: this method has not been yet implemented');
-		//return $data;
+		return $data;
 	}
 
 	/**
-	 * JBIG2Decode (NOT IMPLEMETED - RETURN AN EXCEPTION)
+	 * JBIG2Decode (NOT IMPLEMETED)
 	 * Decompresses data encoded using the JBIG2 standard, reproducing the original monochrome (1 bit per pixel) image data (or an approximation of that data).
 	 * @param $data (string) Data to decode.
 	 * @return Decoded data string.
@@ -419,12 +418,11 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterJBIG2Decode($data) {
-		self::Error('~decodeFilterJBIG2Decode: this method has not been yet implemented');
-		//return $data;
+		return $data;
 	}
 
 	/**
-	 * DCTDecode (NOT IMPLEMETED - RETURN AN EXCEPTION)
+	 * DCTDecode (NOT IMPLEMETED)
 	 * Decompresses data encoded using a DCT (discrete cosine transform) technique based on the JPEG standard, reproducing image sample data that approximates the original data.
 	 * @param $data (string) Data to decode.
 	 * @return Decoded data string.
@@ -432,12 +430,11 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterDCTDecode($data) {
-		self::Error('~decodeFilterDCTDecode: this method has not been yet implemented');
-		//return $data;
+		return $data;
 	}
 
 	/**
-	 * JPXDecode (NOT IMPLEMETED - RETURN AN EXCEPTION)
+	 * JPXDecode (NOT IMPLEMETED)
 	 * Decompresses data encoded using the wavelet-based JPEG2000 standard, reproducing the original image data.
 	 * @param $data (string) Data to decode.
 	 * @return Decoded data string.
@@ -445,12 +442,11 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterJPXDecode($data) {
-		self::Error('~decodeFilterJPXDecode: this method has not been yet implemented');
-		//return $data;
+		return $data;
 	}
 
 	/**
-	 * Crypt (NOT IMPLEMETED - RETURN AN EXCEPTION)
+	 * Crypt (NOT IMPLEMETED)
 	 * Decrypts data encrypted by a security handler, reproducing the data as it was before encryption.
 	 * @param $data (string) Data to decode.
 	 * @return Decoded data string.
@@ -458,20 +454,20 @@ class TCPDF_FILTERS {
 	 * @public static
 	 */
 	public static function decodeFilterCrypt($data) {
-		self::Error('~decodeFilterCrypt: this method has not been yet implemented');
-		//return $data;
+		return $data;
 	}
 
 	// --- END FILTERS SECTION -------------------------------------------------
 
 	/**
-	 * Throw an exception.
+	 * This method is automatically called in case of fatal error; it simply outputs the message and halts the execution.
 	 * @param $msg (string) The error message
 	 * @since 1.0.000 (2011-05-23)
 	 * @public static
 	 */
 	public static function Error($msg) {
-		throw new Exception('TCPDF_PARSER ERROR: '.$msg);
+		// exit program and print error
+		die('<strong>TCPDF_FILTERS ERROR: </strong>'.$msg);
 	}
 
 } // END OF TCPDF_FILTERS CLASS
