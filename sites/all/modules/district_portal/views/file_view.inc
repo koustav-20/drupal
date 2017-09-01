@@ -47,3 +47,43 @@ $handler->display->display_options['arguments']['fid']['summary_options']['items
 
 /* Display: Single File View */
 $handler = $view->new_display('block', 'Single File View', 'block');
+
+/* Display: Photograph View */
+$handler = $view->new_display('block', 'Photograph View', 'block_1');
+$handler->display->display_options['defaults']['fields'] = FALSE;
+/* Field: File: Rendered */
+$handler->display->display_options['fields']['rendered']['id'] = 'rendered';
+$handler->display->display_options['fields']['rendered']['table'] = 'file_managed';
+$handler->display->display_options['fields']['rendered']['field'] = 'rendered';
+$handler->display->display_options['fields']['rendered']['label'] = '';
+$handler->display->display_options['fields']['rendered']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['rendered']['element_default_classes'] = FALSE;
+$handler->display->display_options['fields']['rendered']['hide_alter_empty'] = FALSE;
+$handler->display->display_options['fields']['rendered']['file_view_mode'] = 'photograph';
+
+/* Display: Signature View */
+$handler = $view->new_display('block', 'Signature View', 'block_2');
+$handler->display->display_options['defaults']['fields'] = FALSE;
+/* Field: File: Rendered */
+$handler->display->display_options['fields']['rendered']['id'] = 'rendered';
+$handler->display->display_options['fields']['rendered']['table'] = 'file_managed';
+$handler->display->display_options['fields']['rendered']['field'] = 'rendered';
+$handler->display->display_options['fields']['rendered']['label'] = '';
+$handler->display->display_options['fields']['rendered']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['rendered']['element_default_classes'] = FALSE;
+$handler->display->display_options['fields']['rendered']['hide_alter_empty'] = FALSE;
+$handler->display->display_options['fields']['rendered']['file_view_mode'] = 'signature';
+$translatables['file_view'] = array(
+  t('Master'),
+  t('File view'),
+  t('more'),
+  t('Apply'),
+  t('Reset'),
+  t('Sort by'),
+  t('Asc'),
+  t('Desc'),
+  t('All'),
+  t('Single File View'),
+  t('Photograph View'),
+  t('Signature View'),
+);

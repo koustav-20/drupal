@@ -162,21 +162,38 @@ function district_portal_image_default_styles() {
     )
   );
 
-  // Default image preset for Photographs
-  $styles['photograph'] = array(
-    'label' => 'Photograph (120x150)',
+  // Default image preset for Photograph
+  $styles['photo'] = array(
+    'label' => 'Photo (70x70)',
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
-          'width' => 120,
-          'height' => 150,
+          'width' => 70,
+          'height' => 70,
           'upscale' => 1,
         ),
         'weight' => 0
       )
     )
   );
+
+  // Default image preset for Signature
+  $styles['signature'] = array(
+    'label' => 'Signature (150x50)',
+    'effects' => array(
+      array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 150,
+          'height' => 50,
+          'upscale' => 1,
+        ),
+        'weight' => 0
+      )
+    )
+  );
+
   return $styles;
 }
 
