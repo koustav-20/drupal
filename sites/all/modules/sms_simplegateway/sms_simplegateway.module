@@ -39,7 +39,7 @@ function sms_simplegateway_menu() {
  *
  * @param $configuration
  *
- * @return
+ * @return array
  *   Drupal form array
  */
 function sms_simplegateway_admin_form($configuration) {
@@ -145,6 +145,29 @@ function sms_simplegateway_admin_form($configuration) {
     '#maxlength' => 255,
     '#default_value' => isset($configuration['sms_simplegateway_extra_params']) ? $configuration['sms_simplegateway_extra_params'] : NULL,
   );
+  $form['sms_simplegateway_send']['sms_simplegateway_authorization'] = array(
+    '#type' => 'radios',
+    '#title' => t('Authorization'),
+    '#description' => t('For POST Requests Only. use "Username field value" & "Password field value" to specify credentials'),
+    '#default_value' => isset($configuration['sms_simplegateway_authorization']) ? $configuration['sms_simplegateway_authorization'] : NULL,
+    '#options' => array(
+      'none' => 'NONE',
+      'basic' => 'BASIC',
+      'digest' => 'DIGEST',
+      'ntlm' => 'NTLM',
+    ),
+  );
+  $form['sms_simplegateway_send']['sms_simplegateway_content_type'] = array(
+    '#type' => 'radios',
+    '#title' => t('Content Encoding'),
+    '#description' => t('For POST Requests Only.'),
+    '#default_value' => isset($configuration['sms_simplegateway_content_type']) ? $configuration['sms_simplegateway_content_type'] : NULL,
+    '#options' => array(
+      'plain' => 'Plain',
+      'json' => 'Json',
+    ),
+  );
+
 
   $form['sms_simplegateway_receive'] = array(
     '#type' => 'fieldset',
@@ -193,6 +216,7 @@ function sms_simplegateway_admin_form($configuration) {
  *   Message body text.
  * @param $options
  *   Options array from SMS Framework.
+ *
  * @return \stdClass Response array.
  * Response array.
  */
@@ -204,23 +228,47 @@ function sms_simplegateway_send($number, $message, $options) {
     $config['sms_simplegateway_sender_value'] = $options['sender'];
   }
 
-  $query_string = http_build_query(array_filter(array(
-      $config['sms_simplegateway_user_field'] => $config['sms_simplegateway_user_value'],
-      $config['sms_simplegateway_pass_field'] => $config['sms_simplegateway_pass_value'],
-      $config['sms_simplegateway_sender_field'] => $config['sms_simplegateway_sender_value'],
-      $config['sms_simplegateway_number_field'] => $config['sms_simplegateway_number_prefix_value'] . $number,
-      $config['sms_simplegateway_message_field'] => $message,
-    ))) . '&' . $config['sms_simplegateway_extra_params'];
+  $body = array_filter(array(
+    $config['sms_simplegateway_user_field'] => $config['sms_simplegateway_user_value'],
+    $config['sms_simplegateway_pass_field'] => $config['sms_simplegateway_pass_value'],
+    $config['sms_simplegateway_sender_field'] => $config['sms_simplegateway_sender_value'],
+    $config['sms_simplegateway_number_field'] => $config['sms_simplegateway_number_prefix_value'] . $number,
+    $config['sms_simplegateway_message_field'] => $message,
+  ));
 
   switch ($config['sms_simplegateway_method']) {
     case 'GET':
-      $http_result = drupal_http_request($config['sms_simplegateway_base_url'] . $query_string);
+      $body = http_build_query($body) . '&' . $config['sms_simplegateway_extra_params'];
+      $http_result = drupal_http_request($config['sms_simplegateway_base_url'] . '?' . $body);
       break;
     case 'POST':
+      $headers = array();
+      switch ($config['sms_simplegateway_authorization']) {
+        case 'basic':
+          $headers += array('Authorization' => 'Basic ' . base64_encode($config['sms_simplegateway_user_value'] . ':' . $config['sms_simplegateway_pass_value']));
+          break;
+        case 'digest':
+          $headers += array('Authorization' => 'Digest ' . base64_encode($config['sms_simplegateway_user_value'] . ':' . $config['sms_simplegateway_pass_value']));
+          break;
+        case 'ntlm':
+          $headers += array('Authorization' => 'Ntlm ' . base64_encode($config['sms_simplegateway_user_value'] . ':' . $config['sms_simplegateway_pass_value']));
+          break;
+      }
+      switch ($config['sms_simplegateway_content_type']) {
+        case 'plain':
+          $headers += array('Content-Type' => 'application/x-www-form-urlencoded');
+          $body = http_build_query($body) . '&' . $config['sms_simplegateway_extra_params'];
+          break;
+        case 'json':
+          $headers += array('Content-Type' => 'application/json');
+          $body = json_encode($body);
+          break;
+      }
+
       $http_result = drupal_http_request($config['sms_simplegateway_base_url'], array(
-        'headers' => array('Content-Type' => 'application/x-www-form-urlencoded'),
         'method' => 'POST',
-        'data' => $query_string
+        'headers' => $headers,
+        'data' => $body,
       ));
       break;
   }
