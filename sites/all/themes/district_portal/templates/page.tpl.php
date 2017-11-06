@@ -224,6 +224,6 @@ $mobile_nav = $secondary_nav;
     </div>
   <?php endif; ?>
   <div id="copyright" class="<?php print $container_class; ?>">
-    <span>Copyright &copy; 2015 Paschim Medinipur</span>
+    <span><?php echo `git describe --tags`; ?> | Copyright &copy; 2012-2018 Paschim Medinipur</span>
   </div>
 </footer>
