@@ -3,11 +3,7 @@ sites/*/settings*.php
 
 # Ignore paths that contain user-generated content.
 sites/*/files
-sites/*/private
-writereaddata/*
-sites/*/.idea/*
-/sites/all/modules/features/*
-/sites/all/modules/devel/*
-/sites/.idea/*
-.idea/*
+.idea/
+writereaddata/
 CHANGELOG.txt
+google61512d145cab304e.html
